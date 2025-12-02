@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<!--
+	NOTES:
+	1. All tokens are represented by '$' sign in the template.
+	2. You can write your code only wherever mentioned.
+	3. All occurrences of existing tokens will be replaced by their appropriate values.
+	4. Blank lines will be removed automatically.
+	5. Remove unnecessary comments before creating your template.
+-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="authoring-tool" content="Adobe_Animate_CC">
+    <title>星光森林</title>
+    <!-- write your code here -->
+    <!-- 引入样式文件 -->
+    <!--    <link-->
+    <!--            rel="stylesheet"-->
+    <!--            href="https://fastly.jsdelivr.net/npm/vant@4/lib/index.css"-->
+    <!--    />-->
+    <!--    vant插件样式-->
+    <!--    <link href="css/index.css" type="text/css" rel="stylesheet">-->
+
+    <link href="css/css.css" type="text/css" rel="stylesheet">
+    <style>
+        /* .select-box {
+            top: 0;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+            position: absolute;
+            background-color: #14246E;
+        }
+
+        .select-box input[type='radio'] {
+            width: 100%;
+            height: 100%;
+        }
+
+        #canvas {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        input[type='text'] {
+            margin: 0;
+            padding: 0;
+            border-width: 0;
+            font-size: 0.35rem;
+            text-align: center;
+            position: absolute;
+            background: transparent;
+            outline: none;
+        }
+
+        input[type='text']:disabled {
+            color: #000000;
+        }
+
+        textarea {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 0.35rem;
+            border: #ABABAB solid 1px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .button {
+            color: white;
+            background-color: #BA549C;
+            border: #BA549C solid 1px;
+            border-radius: 0.5rem;
+        }
+
+        .share-view {
+            visibility: hidden;
+            position: absolute;
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        .share-view img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .share-view.show {
+            visibility: visible;
+        }
+
+        .video-player {
+            overflow: hidden;
+            position: absolute;
+            visibility: hidden;
+            border: #11B5B9 solid 1px;
+            box-shadow: #11B5B9 0 0 5px;
+        }
+
+        .video-player.show {
+            width: unset;
+            visibility: visible;
+        }
+
+        .video-player video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background-color: #000000;
+        }
+
+        .video-player .screen {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            overflow: hidden;
+            position: absolute;
+            color: white;
+            pointer-events: none;
+        }
+
+        .content-player {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            overflow-y: scroll;
+            visibility: hidden;
+            position: absolute;
+            background-color: #ffffff;
+            transition: opacity 0.5s, top 0.5s ease-out, visibility 0.5s;
+        }
+
+        .content-player.show {
+            top: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .content-player .content {
+            transform: translateY(1000px);
+            transition: transform 0.5s ease-out;
+        }
+
+        .content-player.show .content {
+            transform: translateY(0);
+        }
+
+        .content-player .content-item {
+            padding: 0;
+            margin: 0;
+        }
+
+        .content-player img {
+            width: 100%;
+            vertical-align: top;
+        }
+
+        .content-player .close-btn {
+            top: 30px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            z-index: 1000;
+            position: fixed;
+            border-radius: 50%;
+            background-color: #ffffff;
+            box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
+            transform: rotate(45deg);
+        }
+
+        .content-player .close-btn:after {
+            top: 50%;
+            left: 50%;
+            content: '';
+            display: block;
+            width: 80%;
+            height: 2px;
+            position: absolute;
+            background-color: #B6B6B7;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .content-player .close-btn:before {
+            content: '';
+            display: block;
+            width: 2px;
+            height: 80%;
+            position: absolute;
+            background-color: #B6B6B7;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .card-close-btn {
+            opacity: 0;
+            width: 30px;
+            height: 30px;
+            visibility: hidden;
+            position: absolute;
+            border-radius: 50%;
+            border: white solid 1px;
+            transform: rotate(0deg);
+            background-color: #21EAFF;
+            box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
+            transition: visibility 0.4s, transform 0.4s ease-out, opacity 0.4s ease-out;
+        }
+
+        .card-close-btn:after {
+            content: "";
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 2px;
+            position: absolute;
+            background-color: white;
+            transform: translate3d(-50%, -50%, 0);
+        }
+
+        .card-close-btn:before {
+            content: "";
+            top: 50%;
+            left: 50%;
+            height: 80%;
+            width: 2px;
+            position: absolute;
+            background-color: white;
+            transform: translate3d(-50%, -50%, 0);
+        }
+
+        .card-close-btn.show {
+            opacity: 1;
+            visibility: visible;
+            transform: rotate(45deg);
+        }
+
+        .danmu {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        #loading {
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100000;
+            position: absolute;
+            background-color: #D03138;
+        }
+
+        #loading .bar {
+            top: 50%;
+            left: 50%;
+            width: 30%;
+            height: 3px;
+            position: absolute;
+            background-color: #FFFFFF;
+            transform: translate3d(-50%, -50%, 0);
+        }
+
+        #loading .bar .progress {
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 5px;
+            position: absolute;
+            background-color: #0D962F;
+            transform: translateY(-2px);
+        }
+
+        #loading .text {
+            top: 50%;
+            width: 100%;
+            height: 20px;
+            font-size: 12px;
+            color: #0D962F;
+            line-height: 20px;
+            text-align: center;
+            position: absolute;
+            transform: translateY(10px);
+        } */
+        
+    </style>
+    <script src="js/rem.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/createjs.min.js"></script>
+    <script src="js/vue.global.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="https://code.createjs.com/1.0.0/createjs.js"></script>
+    <script src="main.js?1658802655439"></script>
+    <script src="js/misc.js?1658802655385"></script>
+    <script src="js/page_util.js?1658802655385"></script>
+    <script src="js/main_page.js?1658802655450"></script>
+    <script src="js/button.js?1658802655385"></script>
+    <script src="js/config.js?1658802655385"></script>
+    <script src="js/scorll_view.js?1658802655415"></script>
+    <script src="js/Text.js?1658802655385"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="js/weixin_ticket.js?1658802655412"></script>
+    <script src="https://unpkg.com/js-bullets@0.0.1/dist/BulletJs.min.js"></script>
+    <script src="js/vant4.min.js"></script>
+    <script>
+        // eruda.init()
+
+        let httpHead = "https://online.jup360.com/" // "http://localhost:28003/" //
+        var appid = "wxc407caeb5835eb19";
+
+        var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation, stageScale, stage_inited = false;
+        var pageUtil, mainPage;
+        var canvasScale, WIDTH, HEIGHT;
+        var ORIENTATION;
+        var rowNum = 0;
+        var music_state = true;
+        var indexViewId = 1;
+        
+        // ///////// 拖动相关
+        var drager_ = {
+            x: 0,
+            y: 0,
+            startY: 0,
+            startX: 0,
+            pageX: 0,
+            pageY: 0,
+            changed: false
+        }
+        var pageNum = 1;
+        var res_loader = new createjs.LoadQueue(false);
+        var start_page_loader = new createjs.LoadQueue(false);
+
+        function handleComplete(evt, comp) {
+            //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+            var lib = comp.getLibrary();
+            var ss = comp.getSpriteSheet();
+            var queue = evt.target;
+            var ssMetadata = lib.ssMetadata;
+            for (i = 0; i < ssMetadata.length; i++) {
+                ss[ssMetadata[i].name] = new createjs.SpriteSheet({ "images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames })
+            }
+            exportRoot = new lib.main();
+            stage = new lib.Stage(canvas);
+            stage.enableMouseOver();
+            //Registers the "tick" event listener.
+            fnStartAnimation = function () {
+                stage.addChild(exportRoot);
+                createjs.Ticker.framerate = lib.properties.fps;
+                createjs.Ticker.addEventListener("tick", stage);
+            }
+
+            let inited = false;
+            let resizeCount = 0;
+            AdobeAn.makeResponsive = function (isResp, respDim, isScale, scaleType, domContainers) {
+                var lastW, lastH, lastS = 1;
+                window.addEventListener('resize', resizeCanvas);
+                resizeCanvas();
+
+                function resizeCanvas() {
+                    var w = lib.properties.width, h = lib.properties.height;
+                    var iw = window.innerWidth, ih = window.innerHeight;
+
+                    var ratio = ih / iw;
+
+                    if (!inited && ratio > 1) {
+                        if (resizeCount == 0) {
+                            inited = true;
+                        } else {
+                            // location.reload();
+                        }
+                    }
+
+                    var w = lib.properties.width;
+                    var h = w * ratio;
+                    lib.properties.height = h;
+
+                    canvasScale = w / iw;
+                    var pRatio = window.devicePixelRatio || 1, xRatio = iw / w, yRatio = ih / h, sRatio = 1;
+
+                    if (isResp) {
+                        if ((respDim == 'width' && lastW == iw) || (respDim == 'height' && lastH == ih)) {
+                            sRatio = lastS;
+                        }
+                        else if (!isScale) {
+                            // if(iw<w || ih<h)
+                            sRatio = Math.min(xRatio, yRatio);
+                        }
+                        else if (scaleType == 1) {
+                            sRatio = Math.min(xRatio, yRatio);
+                        }
+                        else if (scaleType == 2) {
+                            sRatio = Math.max(xRatio, yRatio);
+                        }
+                    }
+                    domContainers[0].width = w * pRatio * sRatio;
+                    domContainers[0].height = h * pRatio * sRatio;
+                    domContainers.forEach(function (container) {
+                        container.style.width = w * sRatio + 'px';
+                        container.style.height = h * sRatio + 'px';
+                    });
+                    stage.scaleX = pRatio * sRatio;
+                    stage.scaleY = pRatio * sRatio;
+                    lastW = iw; lastH = ih; lastS = sRatio;
+                    stage.tickOnUpdate = false;
+                    stage.update();
+                    stage.tickOnUpdate = true;
+
+                    handleResizeCanvas(evt, comp);
+                    stage_inited = true;
+
+                    resizeCount++;
+                }
+            }
+
+            //Code to support hidpi screens and responsive scaling.
+            AdobeAn.makeResponsive(true, 'both', false, 1, [canvas, anim_container, dom_overlay_container]);
+            AdobeAn.compositionLoaded(lib.properties.id);
+            fnStartAnimation();
+
+            createjs.Touch.enable(stage);
+            createjs.EventDispatcher.initialize(main_page.prototype);
+
+            pageUtil = new PageUtil(evt, comp);
+
+            exportRoot.music.y = lib.properties.height - 100;
+            exportRoot.music.mc.stop_mc.visible = false;
+            exportRoot.music.visible = false;
+
+            exportRoot.music.addEventListener("click", function (e) {
+                music_state = !music_state;
+                // createjs.Sound.play("sound3_2");
+                var audio = document.getElementById("Jaudio")
+                if (music_state) {
+                    exportRoot.music.play();
+                    audio.play();
+                    exportRoot.music.mc.stop_mc.visible = false;
+                } else {
+                    exportRoot.music.stop();
+                    audio.pause();
+                    exportRoot.music.mc.stop_mc.visible = true;
+                }
+            })
+
+            mainPage = new main_page(evt, comp, 1);
+            mainPage.onInited();
+
+            exportRoot.main.addEventListener("mousedown", function (e) {
+                // return;
+                drager_.x = e.stageX;
+                drager_.y = e.stageY;
+                drager_.startX = e.stageX;
+                drager_.startY = e.stageY;
+
+                mainPage.currPage.onDrag();
+                // console.log("#### root mousedown", drager_.startX, drager_.startY)
+
+                var onPressmove = e => {
+                    var dragX = 0;
+                    var dragY = 0;
+
+                    switch (App.orientation) {
+                        case HORIZONTAL: {
+                            // 水平
+                            // console.log("##### horizontal")
+
+                            if (isNaN(drager_.startX) || drager_.startX == undefined) {
+                                drager_.startX = e.stageX;
+                                drager_.x = e.stageX;
+                            }
+
+                            dragX = e.stageX - drager_.startX;
+                            // console.log("#### root onPressmove dragX", dragX)
+                            // console.log("##### dragX", dragX)
+
+                            if (mainPage.nextPage) {
+                                var x = mainPage.nextPage.x;
+                                x += (e.stageX - drager_.x) / stage.scaleX;
+
+                                if (mainPage.nextPageNum == mainPage.currPageNum + 1) {
+                                    if (x > lib.properties.width) {
+                                        x = lib.properties.width
+                                    }
+
+                                    if (Math.abs(lib.properties.width - mainPage.nextPage.x) > 50) {
+                                        drager_.changed = true;
+                                    } else {
+                                        drager_.changed = false;
+                                    }
+                                }
+
+                                if (mainPage.nextPageNum == mainPage.currPageNum - 1) {
+
+                                    if (x < -lib.properties.width) {
+                                        x = -lib.properties.width
+                                    }
+
+                                    if (Math.abs(mainPage.nextPage.x) < lib.properties.width - 50) {
+                                        drager_.changed = true;
+                                    } else {
+                                        drager_.changed = false;
+                                    }
+                                }
+
+                                mainPage.nextPage.x = x;
+                            }
+
+                            if (mainPage.nextPage == null && Math.abs(dragX) > 10) {
+                                if (dragX < 0) {
+                                    if (!lib["page_" + (mainPage.currPageNum + 1)]) {
+                                        return;
+                                    }
+
+                                    mainPage.nextPageNum = mainPage.currPageNum + 1;
+                                    // 竖屏
+                                    drager_.pageX = lib.properties.width;
+                                    drager_.pageY = lib.properties.height;
+                                } else {
+                                    if (mainPage.currPageNum <= 1) {
+                                        return;
+                                    }
+
+                                    console.log("##### mainPage.currPageNum", mainPage.currPageNum);
+
+                                    // if(mainPage.currPageNum==3) {
+                                    //     mainPage.nextPageNum = 1
+                                    // } else {
+                                    mainPage.nextPageNum = mainPage.currPageNum - 1;
+                                    // }
+
+                                    // 竖屏
+                                    drager_.pageX = -lib.properties.width;
+                                    drager_.pageY = lib.properties.height
+                                }
+
+                                mainPage.nextPage = pageUtil.getPage(mainPage.nextPageNum);
+                                mainPage.nextPage.x = drager_.pageX;
+                                mainPage.nextPage.y = drager_.pageY;
+
+                                exportRoot.main.addChild(mainPage.nextPage);
+                            }
+                            break
+                        }
+                        case VERTICAL: {
+                            // 竖屏
+                            // console.log("##### vertical");
+                            // console.log("##### vertical", e.stageY, drager_.startY);
+
+                            if (isNaN(drager_.startY) || drager_.startY == undefined) {
+                                drager_.startY = e.stageY;
+                                drager_.y = e.stageY;
+                            }
+
+                            dragY = e.stageY - drager_.startY;
+
+                            if (mainPage.nextPage) {
+                                var y = mainPage.nextPage.y;
+                                y += (e.stageY - drager_.y) / stage.scaleY;
+
+                                if (mainPage.nextPageNum > mainPage.currPageNum) {
+                                    if (y > lib.properties.height) {
+                                        y = lib.properties.height
+                                    }
+
+                                    if (Math.abs(lib.properties.height - mainPage.nextPage.y) > 50) {
+                                        drager_.changed = true;
+                                    } else {
+                                        drager_.changed = false;
+                                    }
+                                }
+
+                                if (mainPage.nextPageNum < mainPage.currPageNum) {
+
+                                    if (y < -lib.properties.height) {
+                                        y = -lib.properties.height
+                                    }
+
+                                    if (Math.abs(mainPage.nextPage.y) < lib.properties.height - 50) {
+                                        drager_.changed = true;
+                                    } else {
+                                        drager_.changed = false;
+                                    }
+                                }
+
+                                mainPage.nextPage.y = y;
+                            }
+
+                            if (mainPage.nextPage == null && Math.abs(dragY) > 10) {
+
+                                let event = new createjs.Event();
+                                event.type = PAGE_EVENT_GETPAGENUM;
+
+                                if (dragY < 0) {
+
+                                    // if(mainPage.currPageNum==4) {
+                                    //     return;
+                                    // }
+
+                                    if (mainPage.currPageNum == 5) {
+                                        mainPage.currPageNum = 1;
+                                    }
+
+                                    if (!lib["page_" + (mainPage.currPageNum + 1)]) {
+                                        return;
+                                    }
+
+                                    event.pageNum = mainPage.currPageNum + 1;
+                                    mainPage.dispatchEvent(event);
+
+                                    mainPage.nextPageNum = event.pageNum;
+
+                                    if (mainPage.nextPageNum != mainPage.currPageNum) {
+                                        // 竖屏
+                                        drager_.pageY = lib.properties.height;
+                                        drager_.pageX = 0;
+                                    }
+                                } else {
+                                    if (mainPage.currPageNum == 5) {
+                                        return;
+                                    }
+
+                                    event.pageNum = mainPage.currPageNum - 1;
+
+                                    if (event.pageNum == 1) {
+                                        event.pageNum = 5;
+                                    }
+
+                                    mainPage.dispatchEvent(event);
+                                    mainPage.nextPageNum = event.pageNum;
+
+                                    if (mainPage.nextPageNum != mainPage.currPageNum) {
+                                        // 竖屏
+                                        drager_.pageY = -lib.properties.height;
+                                        drager_.pageX = 0;
+                                    }
+                                }
+
+                                if (mainPage.nextPageNum != mainPage.currPageNum) {
+                                    mainPage.nextPage = pageUtil.getPage(mainPage.nextPageNum);
+                                    mainPage.nextPage.x = drager_.pageX;
+                                    mainPage.nextPage.y = drager_.pageY;
+                                    exportRoot.main.addChild(mainPage.nextPage);
+                                }
+                            }
+                            break
+                        }
+                    }
+
+                    drager_.x = e.stageX;
+                    drager_.y = e.stageY;
+                }
+
+                exportRoot.main.addEventListener("pressmove", onPressmove);
+                exportRoot.main.addEventListener("pressup", function (e) {
+                    e.remove();
+                    exportRoot.main.removeEventListener("pressmove", onPressmove);
+
+                    var alpha = 1;
+                    var x = drager_.pageX
+                    var y = drager_.pageY
+
+                    if (drager_.changed) {
+                        x = 0;
+                        y = 0;
+
+                        switch (App.orientation) {
+                            case HORIZONTAL: {
+                                // 横屏
+                                y = lib.properties.height
+                                break
+                            }
+                            case VERTICAL: {
+                                // 竖屏
+                                break
+                            }
+                        }
+                    }
+
+                    if (mainPage.nextPage) {
+                        mainPage.currPage.onDragFinish(drager_.changed);
+                        createjs.Tween.get(mainPage.nextPage, { override: true }).to({ x: x, y: y, alpha: alpha }, 400).call((event) => {
+                            if (drager_.changed) {
+                                exportRoot.main.removeChild(mainPage.currPage);
+                                mainPage.currPage.onDestroy();
+
+                                mainPage.currPage = mainPage.nextPage;
+                                mainPage.currPageNum = mainPage.nextPageNum
+                                mainPage.currPage.onUpdate();
+                            } else {
+                                exportRoot.main.removeChild(mainPage.nextPage);
+                                mainPage.nextPage.onDestroy();
+                            }
+                            mainPage.nextPage = null;
+                            mainPage.nextPageNum = null;
+                        });
+                    } else {
+                        mainPage.currPage.onDragFinish();
+                    }
+                })
+            })
+        }
+
+        function handleResizeCanvas(evt, comp) {
+
+        }
+
+        function getWeiChatTicket() {
+            reqInstance.post('user/wx_info', { url: window.location.href }).then(result => {
+                console.log(result.data);
+                // let result = response.data;
+
+                wx.config({
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: result.data.appid, // 必填，公众号的唯一标识
+                    timestamp: result.data.timestamp, // 必填，生成签名的时间戳
+                    nonceStr: result.data.nonceStr, // 必填，生成签名的随机串
+                    signature: result.data.signature,// 必填，签名
+                    jsApiList: ['getLocalImgData', 'chooseImage', 'updateAppMessageShareData', 'updateTimelineShareData', 'openLocation']
+                });
+
+                wx.ready(function () {
+                    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+                    wx.updateAppMessageShareData({
+                        title: '慢性鼻窦炎伴鼻息肉学术交流大会', // 分享标题
+                        desc: '喜闻乐见，新生可来', // 分享描述
+                        link: 'https://www.havas-items.com/letterofinvitationh520250320/index.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: 'https://www.havas-items.com/letterofinvitationh520250320/images/share_icon.png', // 分享图标
+                        success: function () {
+                            // 设置成功
+                            // alert('set finish')
+                        }
+                    });
+
+                    wx.updateTimelineShareData({
+                        title: '慢性鼻窦炎伴鼻息肉学术交流大会', // 分享标题
+                        desc: '喜闻乐见，新生可来', // 分享描述
+                        link: 'https://www.havas-items.com/letterofinvitationh520250320/index.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: 'https://www.havas-items.com/letterofinvitationh520250320/images/share_icon.png', // 分享图标
+                        success: function () {
+                            // 设置成功
+                        }
+                    });
+                })
+
+                wx.error(function (res) {
+                    console.log(res)
+                    // Toast("请求失败，请刷新重试");
+                    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                });
+
+                var audioEle = document.getElementById("Jaudio");
+                audioEle.src = "./images/bg1.mp3";
+                this.audioAutoPlay('Jaudio');
+            }).catch(error => {
+                console.log(error);
+            });
+        }
+
+        function audioAutoPlay(id) {
+            var audio = document.getElementById(id),
+                play = function () {
+                    audio.play();
+                    exportRoot.music.visible = true;
+                    exportRoot.music.play();
+                    exportRoot.music.mc.stop_mc.visible = false;
+                    // createjs.Sound.play("sound3");
+                    document.removeEventListener("touchstart", play, false);
+                };
+
+            audio.play();
+            // audio.volume=0;
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                play();
+            }, false);
+            document.addEventListener('YixinJSBridgeReady', function () {
+                play();
+            }, false);
+            document.addEventListener("touchstart", play, false);
+
+            createjs.Sound.initializeDefaultPlugins();
+            var assetsPath = "./images/";
+            var sounds = [{
+                src: "sound1.mp3", id: "s1", data: {
+                    audioSprite: [
+                        { id: "sound1", startTime: 450, duration: 600 },
+                        { id: "sound2", startTime: 2500, duration: 1350 },
+                        { id: "sound3", startTime: 100, duration: 400 }
+                    ]
+                }
+            }, {
+                src: "sound2.mp3", data: {
+                    audioSprite: [
+                        { id: "sound2_1", startTime: 1300, duration: 400 },
+                        { id: "sound2_2", startTime: 1200, duration: 300 }
+                    ]
+                }
+            }, {
+                src: "sound3.mp3", data: {
+                    audioSprite: [
+                        { id: "sound3_1", startTime: 5450, duration: 1700 },
+                        { id: "sound3_2", startTime: 8800, duration: 600 }
+                    ]
+                }
+            }];
+            createjs.Sound.alternateExtensions = ["mp3"];
+            createjs.Sound.on("fileload", e => {
+                console.log(e)
+
+                if (e.id == "s1") {
+                    document.addEventListener("WeixinJSBridgeReady", function () {
+                        createjs.Sound.play("sound1").stop();
+                    }, { once: true });
+                    document.addEventListener('YixinJSBridgeReady', function () {
+                        createjs.Sound.play("sound1").stop();
+                    }, { once: true });
+                    document.addEventListener('touchstart', function () {
+                        createjs.Sound.play("sound1").stop();
+                    }, { once: true });
+                }
+
+            });
+            createjs.Sound.registerSounds(sounds, assetsPath);
+        }
+    </script>
+    <!-- write your code here -->
+</head>
+
+<body style="margin:0px;">
+    <div id="App">
+        <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:750px; height:1334px">
+            <canvas id="canvas" width="750" height="1334"
+                style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+            <div id="dom_overlay_container"
+                style="pointer-events:none; overflow:hidden; width:750px; height:1334px; position: absolute; left: 0px; top: 0px; display: block;">
+            </div>
+        </div>
+
+        <div class="login-view">
+            <div class="login-view__bg"></div>
+            <div style="flex: 1;">
+                <div class="image-block logo" style="left: 0.5rem; top: 0.5rem;">
+                    <img src="./images/logo.png">   
+                </div>
+            </div>
+            <div class="login-view__login_panel form">
+                <div class="form-title">账号</div>
+                <div class="form-content">
+                    <input type="text" placeholder="请输入账号" />
+                </div>
+                <div class="form-title">密码</div>
+                <div class="form-content">
+                    <input type="password" placeholder="请输入账号" />
+                </div>
+                <div class="form-desc">
+                    <a href="#">忘记密码</a>
+                </div>
+                <div class="form-button">
+                    登录
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading-view show">
+            <div class="loading-view_bar"></div>
+        </div>
+
+        <audio src="" id="Jaudio" class="media-audio" preload loop="loop"></audio>
+    </div>
+</body>
+<script>
+    let screen = null;
+
+    const getRandom = (min, max) => parseInt(Math.random() * (max - min + 1)) + min
+
+    const { createApp } = Vue;
+    const App = createApp({
+        data() {
+            return {
+                lib: null,
+                count: null,
+                mapIdx: 0,
+                bitmapData: null,
+                orientation: VERTICAL,
+                loading: {
+                    show: true
+                },
+            }
+        },
+        mounted() {
+            // this.checkOrientation();
+            // // 监听窗口大小变化
+            // window.addEventListener("resize", () => {
+            //     this.checkOrientation();
+            // });
+
+            // this.init();
+            // getWeiChatTicket();
+        },
+        watch: {},
+        methods: {
+            init() {
+                // var comp = AdobeAn.getComposition("D0A85E88F37248D8BAB0E6AD7AE2ADD8");
+                // var lib = comp.getLibrary();
+
+                // var manifest = [
+                //     { src: lib.properties.manifest[0].src, id: lib.properties.manifest[0].id }
+                // ]
+
+                // this.lib = lib;
+                // this.comp = comp;
+
+                // res_loader.loadManifest(manifest);
+                // res_loader.addEventListener("complete", (evt) => {
+                //     this.resloadFinish();
+                // })
+            },
+            resloadFinish() {
+                canvas = document.getElementById("canvas");
+                anim_container = document.getElementById("animation_container");
+                dom_overlay_container = document.getElementById("dom_overlay_container");
+
+                var comp = this.comp;
+
+                var loader = new createjs.LoadQueue(false);
+                loader.addEventListener("fileload", (evt) => { this.handleFileLoad(evt, comp) });
+                loader.addEventListener("complete", function (evt) { handleComplete(evt, comp) });
+                loader.loadManifest(this.lib.properties.manifest);
+            },
+            handleFileLoad(evt, comp) {
+                var images = comp.getImages();
+                if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }
+            },
+            checkOrientation() {
+                if (window.innerWidth > window.innerHeight) {
+                    // console.log("横屏模式");
+                    this.orientation = HORIZONTAL;
+                } else {
+                    // console.log("竖屏模式");
+                    this.orientation = VERTICAL;
+                }
+            }
+        }
+    }).use(vant).use(vant.Lazyload).mount('#App');
+</script>
+
+</html>

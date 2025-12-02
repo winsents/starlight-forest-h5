@@ -1,0 +1,6 @@
+/node_modules/
+/.idea/
+/dist/
+/*_local/
+/css/
+.DS_Store

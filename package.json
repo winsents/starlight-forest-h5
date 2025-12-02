@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "sass": "^1.94.2"
+  },
+  "scripts": {
+    "scss:build": "sass src/scss/css.scss src/css/css.css",
+    "scss:watch": "sass --watch src/scss/css.scss:src/css/css.css --style=compressed --no-source-map"
+  }
+}
