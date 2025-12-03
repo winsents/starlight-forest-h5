@@ -26,271 +26,6 @@
 
     <link href="css/css.css" type="text/css" rel="stylesheet">
     <style>
-        /* .select-box {
-            top: 0;
-            opacity: 0;
-            width: 1px;
-            height: 1px;
-            position: absolute;
-            background-color: #14246E;
-        }
-
-        .select-box input[type='radio'] {
-            width: 100%;
-            height: 100%;
-        }
-
-        #canvas {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        input[type='text'] {
-            margin: 0;
-            padding: 0;
-            border-width: 0;
-            font-size: 0.35rem;
-            text-align: center;
-            position: absolute;
-            background: transparent;
-            outline: none;
-        }
-
-        input[type='text']:disabled {
-            color: #000000;
-        }
-
-        textarea {
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            font-size: 0.35rem;
-            border: #ABABAB solid 1px;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .button {
-            color: white;
-            background-color: #BA549C;
-            border: #BA549C solid 1px;
-            border-radius: 0.5rem;
-        }
-
-        .share-view {
-            visibility: hidden;
-            position: absolute;
-            background: transparent !important;
-            background-color: transparent !important;
-        }
-
-        .share-view img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .share-view.show {
-            visibility: visible;
-        }
-
-        .video-player {
-            overflow: hidden;
-            position: absolute;
-            visibility: hidden;
-            border: #11B5B9 solid 1px;
-            box-shadow: #11B5B9 0 0 5px;
-        }
-
-        .video-player.show {
-            width: unset;
-            visibility: visible;
-        }
-
-        .video-player video {
-            width: 100%;
-            height: 100%;
-            display: block;
-            background-color: #000000;
-        }
-
-        .video-player .screen {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1000;
-            overflow: hidden;
-            position: absolute;
-            color: white;
-            pointer-events: none;
-        }
-
-        .content-player {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            overflow-y: scroll;
-            visibility: hidden;
-            position: absolute;
-            background-color: #ffffff;
-            transition: opacity 0.5s, top 0.5s ease-out, visibility 0.5s;
-        }
-
-        .content-player.show {
-            top: 0;
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .content-player .content {
-            transform: translateY(1000px);
-            transition: transform 0.5s ease-out;
-        }
-
-        .content-player.show .content {
-            transform: translateY(0);
-        }
-
-        .content-player .content-item {
-            padding: 0;
-            margin: 0;
-        }
-
-        .content-player img {
-            width: 100%;
-            vertical-align: top;
-        }
-
-        .content-player .close-btn {
-            top: 30px;
-            right: 20px;
-            width: 30px;
-            height: 30px;
-            z-index: 1000;
-            position: fixed;
-            border-radius: 50%;
-            background-color: #ffffff;
-            box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
-            transform: rotate(45deg);
-        }
-
-        .content-player .close-btn:after {
-            top: 50%;
-            left: 50%;
-            content: '';
-            display: block;
-            width: 80%;
-            height: 2px;
-            position: absolute;
-            background-color: #B6B6B7;
-            transform: translateX(-50%) translateY(-50%);
-        }
-
-        .content-player .close-btn:before {
-            content: '';
-            display: block;
-            width: 2px;
-            height: 80%;
-            position: absolute;
-            background-color: #B6B6B7;
-            left: 50%;
-            top: 50%;
-            transform: translateX(-50%) translateY(-50%);
-        }
-
-        .card-close-btn {
-            opacity: 0;
-            width: 30px;
-            height: 30px;
-            visibility: hidden;
-            position: absolute;
-            border-radius: 50%;
-            border: white solid 1px;
-            transform: rotate(0deg);
-            background-color: #21EAFF;
-            box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
-            transition: visibility 0.4s, transform 0.4s ease-out, opacity 0.4s ease-out;
-        }
-
-        .card-close-btn:after {
-            content: "";
-            top: 50%;
-            left: 50%;
-            width: 80%;
-            height: 2px;
-            position: absolute;
-            background-color: white;
-            transform: translate3d(-50%, -50%, 0);
-        }
-
-        .card-close-btn:before {
-            content: "";
-            top: 50%;
-            left: 50%;
-            height: 80%;
-            width: 2px;
-            position: absolute;
-            background-color: white;
-            transform: translate3d(-50%, -50%, 0);
-        }
-
-        .card-close-btn.show {
-            opacity: 1;
-            visibility: visible;
-            transform: rotate(45deg);
-        }
-
-        .danmu {
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            justify-content: center;
-        }
-
-        #loading {
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 100000;
-            position: absolute;
-            background-color: #D03138;
-        }
-
-        #loading .bar {
-            top: 50%;
-            left: 50%;
-            width: 30%;
-            height: 3px;
-            position: absolute;
-            background-color: #FFFFFF;
-            transform: translate3d(-50%, -50%, 0);
-        }
-
-        #loading .bar .progress {
-            left: 0;
-            bottom: 0;
-            width: 0%;
-            height: 5px;
-            position: absolute;
-            background-color: #0D962F;
-            transform: translateY(-2px);
-        }
-
-        #loading .text {
-            top: 50%;
-            width: 100%;
-            height: 20px;
-            font-size: 12px;
-            color: #0D962F;
-            line-height: 20px;
-            text-align: center;
-            position: absolute;
-            transform: translateY(10px);
-        } */
-        
     </style>
     <script src="js/rem.js"></script>
     <script src="js/jquery-3.1.1.min.js"></script>
@@ -431,24 +166,24 @@
 
             pageUtil = new PageUtil(evt, comp);
 
-            exportRoot.music.y = lib.properties.height - 100;
-            exportRoot.music.mc.stop_mc.visible = false;
-            exportRoot.music.visible = false;
+            // exportRoot.music.y = lib.properties.height - 100;
+            // exportRoot.music.mc.stop_mc.visible = false;
+            // exportRoot.music.visible = false;
 
-            exportRoot.music.addEventListener("click", function (e) {
-                music_state = !music_state;
-                // createjs.Sound.play("sound3_2");
-                var audio = document.getElementById("Jaudio")
-                if (music_state) {
-                    exportRoot.music.play();
-                    audio.play();
-                    exportRoot.music.mc.stop_mc.visible = false;
-                } else {
-                    exportRoot.music.stop();
-                    audio.pause();
-                    exportRoot.music.mc.stop_mc.visible = true;
-                }
-            })
+            // exportRoot.music.addEventListener("click", function (e) {
+            //     music_state = !music_state;
+            //     // createjs.Sound.play("sound3_2");
+            //     var audio = document.getElementById("Jaudio")
+            //     if (music_state) {
+            //         exportRoot.music.play();
+            //         audio.play();
+            //         exportRoot.music.mc.stop_mc.visible = false;
+            //     } else {
+            //         exportRoot.music.stop();
+            //         audio.pause();
+            //         exportRoot.music.mc.stop_mc.visible = true;
+            //     }
+            // })
 
             mainPage = new main_page(evt, comp, 1);
             mainPage.onInited();
@@ -836,14 +571,35 @@
 <body style="margin:0px;">
     <div id="App">
         <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:750px; height:1334px">
-            <canvas id="canvas" width="750" height="1334"
-                style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-            <div id="dom_overlay_container"
-                style="pointer-events:none; overflow:hidden; width:750px; height:1334px; position: absolute; left: 0px; top: 0px; display: block;">
+            <canvas id="canvas" width="750" height="1334" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+            <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:750px; height:1334px; position: absolute; left: 0px; top: 0px; display: block;">  
+            </div>
+            <div id="orderList" class="show"
+                :style="{left: page1.orderList.left+'px', bottom: '0px', width: page1.orderList.width+'px', height: page1.orderList.height+'px'}">
+            </div>
+
+            <div class="left-bar show">
+                <img src="./images/left-bar.png" />
+                <div class="frame">
+                    <div class="icon">
+                        <img src="./images/icon.png" />
+                    </div>
+                    <div class="content">
+                        <div class="name">工号XXX</div>
+                        <div class="desc">000养料</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-bar show">
+                <img src="./images/right-bar.png" />
+                <div class="icon">
+                    <img src="./images/icon.png" />
+                </div>
             </div>
         </div>
 
-        <div class="login-view show">
+        <div class="login-view">
             <div class="login-view__bg"></div>
             <div style="flex: 1;">
                 <div class="image-block logo" style="left: 0.5rem; top: 0.5rem;">
@@ -868,7 +624,7 @@
             </div>
         </div>
 
-        <div id="loading" class="loading-view show">
+        <div id="loading" class="loading-view">
             <div class="loading-view__bg"></div>
             <div class="loading-view_bar">
                 <div class="image-block loading-title">
@@ -891,12 +647,18 @@
             return {
                 lib: null,
                 count: null,
-                mapIdx: 0,
-                bitmapData: null,
                 orientation: VERTICAL,
                 loading: {
                     show: true
                 },
+                page1: {
+                    orderList: {
+                        top: 0,
+                        left: 0,
+                        width: 0,
+                        height: 0
+                    }
+                }
             }
         },
         mounted() {
@@ -906,26 +668,26 @@
             //     this.checkOrientation();
             // });
 
-            // this.init();
+            this.init();
             // getWeiChatTicket();
         },
         watch: {},
         methods: {
             init() {
-                // var comp = AdobeAn.getComposition("D0A85E88F37248D8BAB0E6AD7AE2ADD8");
-                // var lib = comp.getLibrary();
+                var comp = AdobeAn.getComposition("D0A85E88F37248D8BAB0E6AD7AE2ADD8");
+                var lib = comp.getLibrary();
 
-                // var manifest = [
-                //     { src: lib.properties.manifest[0].src, id: lib.properties.manifest[0].id }
-                // ]
+                var manifest = [
+                    { src: lib.properties.manifest[0].src, id: lib.properties.manifest[0].id }
+                ]
 
-                // this.lib = lib;
-                // this.comp = comp;
+                this.lib = lib;
+                this.comp = comp;
 
-                // res_loader.loadManifest(manifest);
-                // res_loader.addEventListener("complete", (evt) => {
-                //     this.resloadFinish();
-                // })
+                res_loader.loadManifest(manifest);
+                res_loader.addEventListener("complete", (evt) => {
+                    this.resloadFinish();
+                })
             },
             resloadFinish() {
                 canvas = document.getElementById("canvas");
