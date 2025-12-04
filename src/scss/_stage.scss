@@ -4,9 +4,66 @@
     background-repeat: no-repeat;
     background-size: contain;
     transform: translateY(100%);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, top 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
     &.show {
         transform: translateY(0);
+    }
+    .btn-groups {
+        display: flex;
+        .tap {
+            flex: 1;
+            text-align: center;
+            height: 1.5rem;
+        }
+    }
+
+    & .scorll-view {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    ul {
+        font-size: 0.3rem;
+    }
+    li {
+        display: flex;
+        align-items: center;
+        padding: 0.2rem 0.3rem;
+        margin: 0 1px;
+        &.current {
+            border-bottom: #aff9cf 2px solid;
+        }
+        & .order {
+            font-size: 0.5rem;
+            padding: 0 0.2rem 0 0;
+        }
+        & .icon {
+            width: 0.8rem;
+            height: 0.8rem;
+            overflow: hidden;
+            background: #FFF;
+            border-radius: 50%;
+            border: #FFF 2px solid;
+            img {
+                width: 100%;
+            }
+        }
+        & .detail {
+            flex: 1;
+            padding: 0 0.2rem;
+            & .area {
+                font-size: 0.25rem;
+            }
+        }
+        & .score {
+            font-size: 0.3rem;
+        }
+
+        &:last-child {
+            margin-bottom: 20px;
+        }
     }
 }
 

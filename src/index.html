@@ -575,7 +575,59 @@
             <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:750px; height:1334px; position: absolute; left: 0px; top: 0px; display: block;">  
             </div>
             <div id="orderList" class="show"
-                :style="{left: page1.orderList.left+'px', bottom: '0px', width: page1.orderList.width+'px', height: page1.orderList.height+'px'}">
+                :style="{left: page1.orderList.left+'px', top: page1.orderList.toggle?'20px':page1.orderList.top+'px', width: page1.orderList.width+'px', height: page1.orderList.height+'px'}">
+                <div class="btn-groups">
+                    <div class="tap"></div>
+                    <div class="tap"></div>
+                </div>
+                <div class="scorll-view" @scroll="onOrderListScroll">
+                    <ul>
+                        <li>
+                            <div class="order">01</div>
+                            <div class="icon">
+                                <img src="./images/icon.png" />
+                            </div>
+                            <div class="detail">
+                                <div class="name">工号：AAAAAA</div>
+                                <div class="area">大区：华北大区</div>
+                            </div>
+                            <div class="score">养料100</div>
+                        </li>
+                        <li>
+                            <div class="order">01</div>
+                            <div class="icon">
+                                <img src="./images/icon.png" />
+                            </div>
+                            <div class="detail">
+                                <div class="name">工号：AAAAAA</div>
+                                <div class="area">大区：华北大区</div>
+                            </div>
+                            <div class="score">养料100</div>
+                        </li>
+                        <li>
+                            <div class="order">01</div>
+                            <div class="icon">
+                                <img src="./images/icon.png" />
+                            </div>
+                            <div class="detail">
+                                <div class="name">工号：AAAAAA</div>
+                                <div class="area">大区：华北大区</div>
+                            </div>
+                            <div class="score">养料100</div>
+                        </li>
+                        <li>
+                            <div class="order">01</div>
+                            <div class="icon">
+                                <img src="./images/icon.png" />
+                            </div>
+                            <div class="detail">
+                                <div class="name">工号：AAAAAA</div>
+                                <div class="area">大区：华北大区</div>
+                            </div>
+                            <div class="score">养料100</div>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="left-bar show">
@@ -656,7 +708,10 @@
                         top: 0,
                         left: 0,
                         width: 0,
-                        height: 0
+                        height: 0,
+                        toggle: false,
+                        toggleStartY: 0,
+                        closeY: 0
                     }
                 }
             }
@@ -712,6 +767,16 @@
                 } else {
                     // console.log("竖屏模式");
                     this.orientation = VERTICAL;
+                }
+            },
+            onOrderListScroll(e) {
+                let scrollPercent = e.target.scrollTop/(e.target.scrollHeight-e.target.clientHeight);
+
+                if (scrollPercent<=0) {
+                    // 滚动到顶部
+                    // this.page1.orderList.toggle = false;
+                } else if (scrollPercent>=1) {
+                    // this.page1.orderList.toggle = true;
                 }
             }
         }

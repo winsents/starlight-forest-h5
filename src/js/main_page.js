@@ -40,11 +40,15 @@ function onPageInited(e) {
 
             page.mc_tree.y = page.tools_bar.y - 180;
 
-            App.page1.orderList.width = page.mc_order_list_rt.getBounds().width/canvasScale;
+            App.page1.orderList.width = page.mc_order_list_rt.getBounds().width / canvasScale;
+            // App.page1.orderList.height = lib.properties.height / canvasScale;
             App.page1.orderList.height = page.mc_order_list_rt.getBounds().height / canvasScale;
             
             let pt = page.localToGlobal(page.mc_order_list_rt.x, page.mc_order_list_rt.y);
             App.page1.orderList.left = pt.x / canvasScale;
+            App.page1.orderList.top = (page.tools_bar.y + 50) / canvasScale;
+            
+            App.page1.orderList.closeY = App.page1.orderList.top;
             
             e.page.addEventListener("mousedown", e => {
                 e.stopPropagation();
