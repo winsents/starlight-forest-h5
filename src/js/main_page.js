@@ -41,7 +41,6 @@ function onPageInited(e) {
             page.mc_tree.y = page.tools_bar.y - 180;
 
             App.page1.orderList.width = page.mc_order_list_rt.getBounds().width / canvasScale;
-            // App.page1.orderList.height = lib.properties.height / canvasScale;
             App.page1.orderList.height = page.mc_order_list_rt.getBounds().height / canvasScale;
             
             let pt = page.localToGlobal(page.mc_order_list_rt.x, page.mc_order_list_rt.y);
@@ -49,6 +48,165 @@ function onPageInited(e) {
             App.page1.orderList.top = (page.tools_bar.y + 50) / canvasScale;
             
             App.page1.orderList.closeY = App.page1.orderList.top;
+
+            page.kettle.visible = false;
+            page.kettle.state = "off";
+            page.tools_bar.kettle.visible = false;
+
+            page.mc_tree.tree.stop();
+            page.mc_tree.tree.mc.stop();
+
+            page.mc_tree.progress_bar.visible = false;
+            page.mc_tree.mc_progress_val.visible = false;
+
+            page.tools_bar.stop();
+
+            // page.mc_tree.mc_s1.gotoAndPlay(1);
+            // page.mc_tree.mc_s2.gotoAndPlay(1);
+
+            let rectKettle = page.kettle.getTransformedBounds();
+            page.rect_test.scaleY = rectKettle.height * 1.5 / page.rect_test.getBounds().height;
+            page.rect_test.scaleX = rectKettle.width * 1.5 / page.rect_test.getBounds().width;
+
+            let setKettleState = function (state) {
+                if(page.kettle.state == state) {
+                    return;
+                }
+
+                page.kettle.state = state;
+
+                switch(state) {
+                    case "on": {
+                        page.kettle.gotoAndPlay("on");
+                        page.mc_tree.tree.mc.play();
+                        break;
+                    }
+                    case "off": {
+                        page.kettle.gotoAndPlay("off");
+                        page.mc_tree.tree.mc.stop();
+                        break;
+                    }
+                }
+            }
+
+            let setProgerss = function (value, digital) {
+
+                if(value<0) value = 0;
+                if(value>1) value = 1;
+
+                // page.mc_tree.progress_bar.progress.scaleX = value;
+
+                createjs.Tween.get(page.mc_tree.progress_bar.progress, { override: true }).to({ scaleX: value }, 200).addEventListener("change", (event) => { });
+                
+                if (digital != undefined) { 
+
+                    digital = String(digital);
+
+                    let _cx = page.mc_tree.mc_progress_val.mc_prefix.x + page.mc_tree.mc_progress_val.mc_prefix.getBounds().width + 3;
+
+                    for (let i = 0; i < digital.length; i++) {
+                        console.log(digital.charAt(i));
+
+                        let numMc = null;
+                        
+                        numMc = page.mc_tree.mc_progress_val.getChildByName("num_" + i);
+
+                        if (numMc) {
+                            numMc.gotoAndStop(Number(digital.charAt(i)));
+                            continue;
+                        } else { 
+                            numMc = new lib.digital();
+                            numMc.name = "num_" + i;
+                            numMc.x = _cx;
+                            numMc.y = 1;
+                            _cx += numMc.getBounds().width;
+
+                            numMc.gotoAndStop(Number(digital.charAt(i)));
+                        }
+                        
+                        page.mc_tree.mc_progress_val.addChild(numMc);
+                    }
+
+                    let _i = digital.length - 1;
+                    let numMc = page.mc_tree.mc_progress_val.getChildByName("num_" + _i);
+
+                    page.mc_tree.mc_progress_val.mc_suffix.x = numMc.x+numMc.getBounds().width + 5;
+                    page.mc_tree.mc_progress_val.x = page.mc_tree.progress_bar.x + (page.mc_tree.progress_bar.getTransformedBounds().width - page.mc_tree.mc_progress_val.getTransformedBounds().width) / 2;
+
+                    _i = digital.length
+
+                    while (true) { 
+                        numMc = page.mc_tree.mc_progress_val.getChildByName("num_" + _i);
+                        if (numMc) {
+                            page.mc_tree.mc_progress_val.removeChild(numMc);
+                            _i++;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            let onPressmove = function (evt) { 
+                let pt = page.globalToLocal(evt.stageX, evt.stageY);
+                
+                createjs.Tween.get(page.kettle, { override: true }).to({ x: (pt.x-30), y: (pt.y-50), scaleX: 1.5, scaleY: 1.5 }, 200).addEventListener("change", (event) => { });
+                
+                let rectTree = page.mc_tree.rect_tree.getTransformedBounds();
+                pt =  page.mc_tree.localToLocal(rectTree.x, rectTree.y, page);
+                rectTree.x = pt.x;
+                rectTree.y = pt.y;
+
+                page.rect_test.x = page.kettle.x - rectKettle.width/2;
+                page.rect_test.y = page.kettle.y - rectKettle.height/2;
+                
+                rectKettle = page.rect_test.getTransformedBounds();
+                
+                if (rectKettle.x > rectTree.x && rectKettle.x < rectTree.x + rectTree.width &&
+                    rectKettle.y > rectTree.y && rectKettle.y + rectKettle.height/2 < rectTree.y + rectTree.height) {
+                    // console.log("在范围内");
+                    setKettleState("on");
+                } else {
+                    // console.log("不在范围内");
+                    setKettleState("off");
+                }
+
+                evt.stopPropagation();
+            }
+
+            setProgerss(0, 3);
+
+            page.mc_tree.mc_s1.mc.addEventListener("click", e => { 
+                page.mc_tree.mc_s1.gotoAndPlay("used");
+                App.mainView.nutrientsNum = Math.max(0, App.mainView.nutrientsNum - 1);
+                App.mainView.useNutrientsNum++
+                // setProgerss(0.5, 1);
+                e.remove();
+            });
+
+            page.mc_tree.mc_s2.mc.addEventListener("click", e => { 
+                page.mc_tree.mc_s2.gotoAndPlay("used");
+                App.mainView.nutrientsNum = Math.max(0, App.mainView.nutrientsNum - 1);
+                App.mainView.useNutrientsNum++
+                e.remove();
+                // setProgerss(1, 0);
+                // page.mc_tree.tree.gotoAndPlay(1);
+            });
+
+            page.tools_bar.kettle.addEventListener("mousedown", e => {
+                page.tools_bar.kettle.kettle.mc.alpha = 0;
+
+                console.log("mousedown kettle", page.tools_bar.kettle.kettle);
+
+                let pt = page.tools_bar.kettle.kettle.localToLocal(page.tools_bar.kettle.kettle.mc.x, page.tools_bar.kettle.kettle.mc.y, page);
+                page.kettle.x = pt.x;
+                page.kettle.y = pt.y;
+                page.kettle.gotoAndStop(0);
+                page.kettle.visible = true;
+
+                page.addEventListener("pressmove", onPressmove);
+                e.stopPropagation();
+            });
             
             e.page.addEventListener("mousedown", e => {
                 e.stopPropagation();
@@ -57,6 +215,15 @@ function onPageInited(e) {
                 e.stopPropagation();
             });
             e.page.addEventListener("pressup", e => {
+                page.tools_bar.kettle.kettle.mc.alpha = 1;
+                page.kettle.visible = false;
+
+                page.kettle.scaleX = 1;
+                page.kettle.scaleY = 1;
+
+                page.mc_tree.tree.mc.stop();
+
+                page.removeEventListener("pressmove", onPressmove);
                 e.stopPropagation();
             });
             break;

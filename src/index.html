@@ -25,8 +25,6 @@
     <!--    <link href="css/index.css" type="text/css" rel="stylesheet">-->
 
     <link href="css/css.css" type="text/css" rel="stylesheet">
-    <style>
-    </style>
     <script src="js/rem.js"></script>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/createjs.min.js"></script>
@@ -136,12 +134,14 @@
                             sRatio = Math.max(xRatio, yRatio);
                         }
                     }
+                    
                     domContainers[0].width = w * pRatio * sRatio;
                     domContainers[0].height = h * pRatio * sRatio;
                     domContainers.forEach(function (container) {
                         container.style.width = w * sRatio + 'px';
                         container.style.height = h * sRatio + 'px';
                     });
+
                     stage.scaleX = pRatio * sRatio;
                     stage.scaleY = pRatio * sRatio;
                     lastW = iw; lastH = ih; lastS = sRatio;
@@ -165,25 +165,6 @@
             createjs.EventDispatcher.initialize(main_page.prototype);
 
             pageUtil = new PageUtil(evt, comp);
-
-            // exportRoot.music.y = lib.properties.height - 100;
-            // exportRoot.music.mc.stop_mc.visible = false;
-            // exportRoot.music.visible = false;
-
-            // exportRoot.music.addEventListener("click", function (e) {
-            //     music_state = !music_state;
-            //     // createjs.Sound.play("sound3_2");
-            //     var audio = document.getElementById("Jaudio")
-            //     if (music_state) {
-            //         exportRoot.music.play();
-            //         audio.play();
-            //         exportRoot.music.mc.stop_mc.visible = false;
-            //     } else {
-            //         exportRoot.music.stop();
-            //         audio.pause();
-            //         exportRoot.music.mc.stop_mc.visible = true;
-            //     }
-            // })
 
             mainPage = new main_page(evt, comp, 1);
             mainPage.onInited();
@@ -335,10 +316,6 @@
 
                                 if (dragY < 0) {
 
-                                    // if(mainPage.currPageNum==4) {
-                                    //     return;
-                                    // }
-
                                     if (mainPage.currPageNum == 5) {
                                         mainPage.currPageNum = 1;
                                     }
@@ -388,7 +365,6 @@
                             break
                         }
                     }
-
                     drager_.x = e.stageX;
                     drager_.y = e.stageY;
                 }
@@ -464,10 +440,10 @@
                 wx.ready(function () {
                     // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
                     wx.updateAppMessageShareData({
-                        title: '慢性鼻窦炎伴鼻息肉学术交流大会', // 分享标题
-                        desc: '喜闻乐见，新生可来', // 分享描述
-                        link: 'https://www.havas-items.com/letterofinvitationh520250320/index.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        imgUrl: 'https://www.havas-items.com/letterofinvitationh520250320/images/share_icon.png', // 分享图标
+                        title: '', // 分享标题
+                        desc: '', // 分享描述
+                        link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: '', // 分享图标
                         success: function () {
                             // 设置成功
                             // alert('set finish')
@@ -475,10 +451,10 @@
                     });
 
                     wx.updateTimelineShareData({
-                        title: '慢性鼻窦炎伴鼻息肉学术交流大会', // 分享标题
-                        desc: '喜闻乐见，新生可来', // 分享描述
-                        link: 'https://www.havas-items.com/letterofinvitationh520250320/index.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                        imgUrl: 'https://www.havas-items.com/letterofinvitationh520250320/images/share_icon.png', // 分享图标
+                        title: '', // 分享标题
+                        desc: '', // 分享描述
+                        link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                        imgUrl: '', // 分享图标
                         success: function () {
                             // 设置成功
                         }
@@ -560,7 +536,6 @@
                         createjs.Sound.play("sound1").stop();
                     }, { once: true });
                 }
-
             });
             createjs.Sound.registerSounds(sounds, assetsPath);
         }
@@ -570,11 +545,11 @@
 
 <body style="margin:0px;">
     <div id="App">
-        <div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:750px; height:1334px">
+        <div id="animation_container" :class="{show: mainView.show}" style="background-color:rgba(255, 255, 255, 1.00); width:750px; height:1334px">
             <canvas id="canvas" width="750" height="1334" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
             <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:750px; height:1334px; position: absolute; left: 0px; top: 0px; display: block;">  
             </div>
-            <div id="orderList" class="show"
+            <div id="orderList" :class="{show: mainView.orderList.show}"
                 :style="{left: page1.orderList.left+'px', top: page1.orderList.toggle?'20px':page1.orderList.top+'px', width: page1.orderList.width+'px', height: page1.orderList.height+'px'}">
                 <div class="btn-groups">
                     <div class="tap"></div>
@@ -582,43 +557,10 @@
                 </div>
                 <div class="scorll-view" @scroll="onOrderListScroll">
                     <ul>
-                        <li>
+                        <li v-for="n in 20" :key="n">
                             <div class="order">01</div>
                             <div class="icon">
-                                <img src="./images/icon.png" />
-                            </div>
-                            <div class="detail">
-                                <div class="name">工号：AAAAAA</div>
-                                <div class="area">大区：华北大区</div>
-                            </div>
-                            <div class="score">养料100</div>
-                        </li>
-                        <li>
-                            <div class="order">01</div>
-                            <div class="icon">
-                                <img src="./images/icon.png" />
-                            </div>
-                            <div class="detail">
-                                <div class="name">工号：AAAAAA</div>
-                                <div class="area">大区：华北大区</div>
-                            </div>
-                            <div class="score">养料100</div>
-                        </li>
-                        <li>
-                            <div class="order">01</div>
-                            <div class="icon">
-                                <img src="./images/icon.png" />
-                            </div>
-                            <div class="detail">
-                                <div class="name">工号：AAAAAA</div>
-                                <div class="area">大区：华北大区</div>
-                            </div>
-                            <div class="score">养料100</div>
-                        </li>
-                        <li>
-                            <div class="order">01</div>
-                            <div class="icon">
-                                <img src="./images/icon.png" />
+                                <img src="./images/user-icon.png" />
                             </div>
                             <div class="detail">
                                 <div class="name">工号：AAAAAA</div>
@@ -630,11 +572,11 @@
                 </div>
             </div>
 
-            <div class="left-bar show">
+            <div class="left-bar" :class="{show: mainView.leftBar.show}">
                 <img src="./images/left-bar.png" />
                 <div class="frame">
                     <div class="icon">
-                        <img src="./images/icon.png" />
+                        <img src="./images/user-icon.png" />
                     </div>
                     <div class="content">
                         <div class="name">工号XXX</div>
@@ -643,7 +585,7 @@
                 </div>
             </div>
 
-            <div class="right-bar show">
+            <div class="right-bar" :class="{show: mainView.rightBar.show}">
                 <img src="./images/right-bar.png" />
                 <div class="icon">
                     <img src="./images/icon.png" />
@@ -651,7 +593,7 @@
             </div>
         </div>
 
-        <div class="login-view">
+        <div class="login-view" :class="{show: loginView.show}">
             <div class="login-view__bg"></div>
             <div style="flex: 1;">
                 <div class="image-block logo" style="left: 0.5rem; top: 0.5rem;">
@@ -661,22 +603,22 @@
             <div class="login-view__login_panel form">
                 <div class="form-title">账号</div>
                 <div class="form-content">
-                    <input type="text" placeholder="请输入账号" />
+                    <input type="text" placeholder="请输入账号" v-model="loginView.username" />
                 </div>
                 <div class="form-title">密码</div>
                 <div class="form-content">
-                    <input type="password" placeholder="请输入账号" />
+                    <input type="password" placeholder="请输入账号" v-model="loginView.password" />
                 </div>
                 <div class="form-desc">
                     <a href="#">忘记密码</a>
                 </div>
-                <div class="form-button">
+                <div class="form-button" @click="onLogin">
                     登录
                 </div>
             </div>
         </div>
 
-        <div id="loading" class="loading-view">
+        <div id="loading" class="loading-view" :class="{show: loadingView.show}">
             <div class="loading-view__bg"></div>
             <div class="loading-view_bar">
                 <div class="image-block loading-title">
@@ -690,8 +632,6 @@
 </body>
 <script>
     let screen = null;
-
-    const getRandom = (min, max) => parseInt(Math.random() * (max - min + 1)) + min
 
     const { createApp } = Vue;
     const App = createApp({
@@ -713,20 +653,114 @@
                         toggleStartY: 0,
                         closeY: 0
                     }
+                },
+                loginView: {
+                    show: false,
+                    username: '',
+                    password: ''
+                },
+                loadingView: {
+                    // loading 视图
+                    show: true
+                },
+                mainView: {
+                    // 主要视图
+                    show: false,
+                    // 养料数量
+                    nutrientsNum: 0,
+                    // 使用的养料数量
+                    useNutrientsNum: 0,
+
+                    leftBar: {
+                        show: false
+                    },
+                    rightBar: {
+                        show: false
+                    },
+                    orderList: {
+                        show: false
+                    }
                 }
             }
         },
         mounted() {
-            // this.checkOrientation();
-            // // 监听窗口大小变化
-            // window.addEventListener("resize", () => {
-            //     this.checkOrientation();
-            // });
-
             this.init();
-            // getWeiChatTicket();
+
+            setTimeout(() => {
+                this.loadingView.show = false;
+                this.loginView.show = true;
+            }, 5000);
         },
-        watch: {},
+        watch: {
+            'mainView.nutrientsNum'(newVal, oldVal) {
+                console.log('养料数量变化了', newVal, oldVal, mainPage.currPage.page);
+
+                if(newVal < oldVal) {
+                    // 减少了养料，不播放动画
+                    return;
+                }
+
+                if (newVal > 2) {
+                    newVal = 2;
+                }
+
+                let page = mainPage.currPage.page;
+
+                // 播放养料变化动画
+                for (let i = 0; i < newVal; i++) {
+                     page.mc_tree[`mc_s${i + 1}`].gotoAndPlay(1);
+                }
+            },
+            'mainView.useNutrientsNum'(newVal, oldVal) {
+                console.log('使用的养料数量变化了', newVal, oldVal, mainPage.currPage.page);
+                // let page = mainPage.currPage.page;
+
+                if (newVal <= 2) {
+                    let page = mainPage.currPage.page;
+
+                    if(!page.useNutrientsNumTicked) {
+                        onTick = (e) => {
+                            console.log('## on tick', this.mainView.useNutrientsNum);
+
+                            let currFrame = page.mc_tree.tree.currentFrame;
+                            let totalFrames = page.mc_tree.tree.totalFrames;
+
+                            if(this.mainView.useNutrientsNum<2) {
+                                totalFrames = Math.floor(totalFrames/2);
+                            }
+
+                            if (currFrame >= totalFrames - 1) {
+                                // 播放完毕
+                                page.mc_tree.tree.gotoAndStop(totalFrames - 1);
+                                page.useNutrientsNumTicked = false;
+                                e.remove();
+
+                                if(this.mainView.useNutrientsNum>=2) {
+                                    page.mc_tree.progress_bar.visible = true;
+                                    page.mc_tree.mc_progress_val.visible = true;    
+                                    page.mc_tree.progress_bar.alpha = 0;
+                                    page.mc_tree.mc_progress_val.alpha = 0;
+
+                                    createjs.Tween.get(page.mc_tree.progress_bar, { override: true }).to({ alpha: 1 }, 400);
+                                    createjs.Tween.get(page.mc_tree.mc_progress_val, { override: true }).to({ alpha: 1 }, 400);
+
+                                    page.tools_bar.kettle.visible = true;
+                                    page.tools_bar.kettle.gotoAndPlay(1);
+                                }
+                                return;
+                            }
+
+                            currFrame++;
+
+                            page.mc_tree.tree.gotoAndStop(currFrame);
+                        }
+
+                        page.useNutrientsNumTicked = true;
+                        page.addEventListener("tick", onTick);
+                    }
+                }
+            }
+        },
         methods: {
             init() {
                 var comp = AdobeAn.getComposition("D0A85E88F37248D8BAB0E6AD7AE2ADD8");
@@ -771,13 +805,38 @@
             },
             onOrderListScroll(e) {
                 let scrollPercent = e.target.scrollTop/(e.target.scrollHeight-e.target.clientHeight);
+            },
+            onLogin() {
+                console.log('登录', this.loginView.username, this.loginView.password);
+                // 登录逻辑
+                this.loginView.show = false;
+                this.openMainView();
+            },
+            openMainView() {
+                // 打开主要视图
+                // this.loginView.show = true;
 
-                if (scrollPercent<=0) {
-                    // 滚动到顶部
-                    // this.page1.orderList.toggle = false;
-                } else if (scrollPercent>=1) {
-                    // this.page1.orderList.toggle = true;
-                }
+                this.mainView.show = true;
+                let page = mainPage.currPage.page;
+                
+                setTimeout(() => {
+                    
+                    // 播放工具栏动画
+                    page.tools_bar.gotoAndPlay(1);
+                    this.mainView.leftBar.show = true;
+                    this.mainView.rightBar.show = true;
+
+                    setTimeout(() => {
+                        // 模拟养料数量变化
+                        this.mainView.nutrientsNum = 2;
+                        this.mainView.orderList.show = true;
+                    }, 1000);
+
+                }, 1000);
+
+                // setTimeout(() => {
+                //     this.mainView.orderList.show = true;
+                // }, 1500);
             }
         }
     }).use(vant).use(vant.Lazyload).mount('#App');
