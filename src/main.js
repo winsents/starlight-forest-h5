@@ -1598,59 +1598,81 @@ if (reversed == null) { reversed = false; }
 	var props = new Object();
 	props.mode = mode;
 	props.startPosition = startPosition;
-	props.labels = {};
+	props.labels = {"on":1,"off":14};
 	props.loop = loop;
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
+
+	// timeline functions:
+	this.frame_0 = function() {
+		this.stop();
+	}
+	this.frame_11 = function() {
+		this.stop();
+	}
+	this.frame_39 = function() {
+		this.stop();
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(11).call(this.frame_11).wait(28).call(this.frame_39).wait(1));
 
 	// 图层_7
 	this.rect_tree = new lib.元件23_1();
 	this.rect_tree.name = "rect_tree";
 	this.rect_tree.setTransform(229,-417);
 
-	this.timeline.addTween(cjs.Tween.get(this.rect_tree).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.rect_tree).wait(40));
 
 	// 图层_4
-	this.mc_progress_val = new lib.元件30();
-	this.mc_progress_val.name = "mc_progress_val";
-	this.mc_progress_val.setTransform(186,17);
-
 	this.progress_bar = new lib.元件24_1();
 	this.progress_bar.name = "progress_bar";
-	this.progress_bar.setTransform(169,-40);
+	this.progress_bar.setTransform(169,201.95);
+	this.progress_bar.alpha = 0;
+	this.progress_bar._off = true;
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.progress_bar},{t:this.mc_progress_val}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.progress_bar).wait(1).to({_off:false},0).to({y:-40,alpha:1},8).wait(5).to({y:-106},11).to({x:169.5,y:179,alpha:0},13).wait(2));
+
+	// 图层_2
+	this.mc_progress_val = new lib.元件30();
+	this.mc_progress_val.name = "mc_progress_val";
+	this.mc_progress_val.setTransform(185.5,210.95);
+	this.mc_progress_val.alpha = 0;
+	this.mc_progress_val._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.mc_progress_val).wait(3).to({_off:false},0).to({x:186,y:17,alpha:1},8).wait(5).to({y:-97.95},9).to({y:188,alpha:0},13).wait(2));
 
 	// 图层_6
 	this.mc_s2 = new lib.元件17();
 	this.mc_s2.name = "mc_s2";
 	this.mc_s2.setTransform(432.2,-355.35,1,1,0,0,0,0,-41.5);
 
-	this.timeline.addTween(cjs.Tween.get(this.mc_s2).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.mc_s2).wait(40));
 
 	// 图层_3
 	this.mc_s1 = new lib.元件17复制();
 	this.mc_s1.name = "mc_s1";
 	this.mc_s1.setTransform(176.75,-309.6,1,1,0,0,0,0,-41.5);
 
-	this.timeline.addTween(cjs.Tween.get(this.mc_s1).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.mc_s1).wait(40));
 
 	// 图层_1
 	this.tree = new lib.元件14();
 	this.tree.name = "tree";
 	this.tree.setTransform(314.75,-141.2,1,1,0,0,0,-10.4,-2.1);
 
-	this.timeline.addTween(cjs.Tween.get(this.tree).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.tree).wait(40));
 
 	// 图层_5
 	this.instance = new lib.元件12("synched",0);
 	this.instance.setTransform(300.95,-135.55,0.5993,0.5993,0,0,0,-580,-0.1);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(40));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.元件9, new cjs.Rectangle(-46.6,-417,695.1,457), null);
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-46.6,-417,695.1,660);
 
 
 (lib.元件7 = function(mode,startPosition,loop,reversed) {
@@ -1825,7 +1847,7 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/main_atlas_P_1.png?1765192191515", id:"main_atlas_P_1"}
+		{src:"images/main_atlas_P_1.png?1765293951824", id:"main_atlas_P_1"}
 	],
 	preloads: []
 };

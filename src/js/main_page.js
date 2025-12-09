@@ -56,8 +56,8 @@ function onPageInited(e) {
             page.mc_tree.tree.stop();
             page.mc_tree.tree.mc.stop();
 
-            page.mc_tree.progress_bar.visible = false;
-            page.mc_tree.mc_progress_val.visible = false;
+            // page.mc_tree.progress_bar.visible = false;
+            // page.mc_tree.mc_progress_val.visible = false;
 
             page.tools_bar.stop();
 
@@ -89,15 +89,19 @@ function onPageInited(e) {
                 }
             }
 
-            let setProgerss = function (value, digital) {
+            let setProgerss = function (value, digital, animation = true) {
 
                 if(value<0) value = 0;
                 if(value>1) value = 1;
 
                 // page.mc_tree.progress_bar.progress.scaleX = value;
 
-                createjs.Tween.get(page.mc_tree.progress_bar.progress, { override: true }).to({ scaleX: value }, 200).addEventListener("change", (event) => { });
-                
+                if (animation) {
+                    createjs.Tween.get(page.mc_tree.progress_bar.progress, { override: true }).to({ scaleX: value }, 500).addEventListener("change", (event) => { });
+                } else { 
+                    page.mc_tree.progress_bar.progress.scaleX = value;
+                }
+
                 if (digital != undefined) { 
 
                     digital = String(digital);
@@ -147,6 +151,8 @@ function onPageInited(e) {
                 }
             }
 
+            page.setProgerss = setProgerss;
+
             let onPressmove = function (evt) { 
                 let pt = page.globalToLocal(evt.stageX, evt.stageY);
                 
@@ -174,7 +180,7 @@ function onPageInited(e) {
                 evt.stopPropagation();
             }
 
-            setProgerss(0, 3);
+            setProgerss(0, 0);
 
             page.mc_tree.mc_s1.mc.addEventListener("click", e => { 
                 page.mc_tree.mc_s1.gotoAndPlay("used");

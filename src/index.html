@@ -670,6 +670,8 @@
                     nutrientsNum: 0,
                     // 使用的养料数量
                     useNutrientsNum: 0,
+                    // 当前阶段需要使用的养料数量
+                    needUseNutrientsNum: 0,
 
                     leftBar: {
                         show: false
@@ -712,53 +714,59 @@
                 }
             },
             'mainView.useNutrientsNum'(newVal, oldVal) {
-                console.log('使用的养料数量变化了', newVal, oldVal, mainPage.currPage.page);
-                // let page = mainPage.currPage.page;
+                console.log('使用的养料数量变化了', newVal, oldVal, this.mainView.needUseNutrientsNum, mainPage.currPage.page);
 
-                if (newVal <= 2) {
-                    let page = mainPage.currPage.page;
+                // needUseNutrientsNum
+                let page = mainPage.currPage.page;
 
-                    if(!page.useNutrientsNumTicked) {
-                        onTick = (e) => {
-                            console.log('## on tick', this.mainView.useNutrientsNum);
+                page.setProgerss(newVal/this.mainView.needUseNutrientsNum, this.mainView.needUseNutrientsNum-newVal);
 
-                            let currFrame = page.mc_tree.tree.currentFrame;
-                            let totalFrames = page.mc_tree.tree.totalFrames;
+                this.updateUseNutrientsNum();
 
-                            if(this.mainView.useNutrientsNum<2) {
-                                totalFrames = Math.floor(totalFrames/2);
-                            }
+                // if (newVal <= 2) {
+                //     let page = mainPage.currPage.page;
 
-                            if (currFrame >= totalFrames - 1) {
-                                // 播放完毕
-                                page.mc_tree.tree.gotoAndStop(totalFrames - 1);
-                                page.useNutrientsNumTicked = false;
-                                e.remove();
+                //     if(!page.useNutrientsNumTicked) {
+                //         onTick = (e) => {
+                //             console.log('## on tick', this.mainView.useNutrientsNum);
 
-                                if(this.mainView.useNutrientsNum>=2) {
-                                    page.mc_tree.progress_bar.visible = true;
-                                    page.mc_tree.mc_progress_val.visible = true;    
-                                    page.mc_tree.progress_bar.alpha = 0;
-                                    page.mc_tree.mc_progress_val.alpha = 0;
+                //             let currFrame = page.mc_tree.tree.currentFrame;
+                //             let totalFrames = page.mc_tree.tree.totalFrames;
 
-                                    createjs.Tween.get(page.mc_tree.progress_bar, { override: true }).to({ alpha: 1 }, 400);
-                                    createjs.Tween.get(page.mc_tree.mc_progress_val, { override: true }).to({ alpha: 1 }, 400);
+                //             if(this.mainView.useNutrientsNum<2) {
+                //                 totalFrames = Math.floor(totalFrames/2);
+                //             }
 
-                                    page.tools_bar.kettle.visible = true;
-                                    page.tools_bar.kettle.gotoAndPlay(1);
-                                }
-                                return;
-                            }
+                //             if (currFrame >= totalFrames - 1) {
+                //                 // 播放完毕
+                //                 page.mc_tree.tree.gotoAndStop(totalFrames - 1);
+                //                 page.useNutrientsNumTicked = false;
+                //                 e.remove();
 
-                            currFrame++;
+                //                 if(this.mainView.useNutrientsNum>=2) {
+                                    // page.mc_tree.progress_bar.visible = true;
+                                    // page.mc_tree.mc_progress_val.visible = true;    
+                                    // page.mc_tree.progress_bar.alpha = 0;
+                                    // page.mc_tree.mc_progress_val.alpha = 0;
 
-                            page.mc_tree.tree.gotoAndStop(currFrame);
-                        }
+                                    // createjs.Tween.get(page.mc_tree.progress_bar, { override: true }).to({ alpha: 1 }, 400);
+                                    // createjs.Tween.get(page.mc_tree.mc_progress_val, { override: true }).to({ alpha: 1 }, 400);
 
-                        page.useNutrientsNumTicked = true;
-                        page.addEventListener("tick", onTick);
-                    }
-                }
+                //                     page.tools_bar.kettle.visible = true;
+                //                     page.tools_bar.kettle.gotoAndPlay(1);
+                //                 }
+                //                 return;
+                //             }
+
+                //             currFrame++;
+
+                //             page.mc_tree.tree.gotoAndStop(currFrame);
+                //         }
+
+                //         page.useNutrientsNumTicked = true;
+                //         page.addEventListener("tick", onTick);
+                //     }
+                // }
             }
         },
         methods: {
@@ -812,24 +820,73 @@
                 this.loginView.show = false;
                 this.openMainView();
             },
+            updateUseNutrientsNum () {
+                let page = mainPage.currPage.page;
+
+                if(this.mainView.useNutrientsNum>=this.mainView.needUseNutrientsNum) {   
+                    page.tools_bar.kettle.visible = true;
+                    page.tools_bar.gotoAndPlay(1);
+
+                    this.updateTreeState();
+                }
+            },
+            updateTreeState() {
+                let page = mainPage.currPage.page;
+
+                setTimeout(() => {
+                    page.mc_tree.gotoAndPlay("off");
+                    page.mc_tree.addEventListener("tick", (e) => {
+                        // 树动画播放完毕
+                        let currFrame = page.mc_tree.currentFrame;
+                        let totalFrames = page.mc_tree.totalFrames;
+
+                        console.log('## tree on tick', currFrame, totalFrames);
+                        currFrame++
+
+                        page.mc_tree.gotoAndStop(currFrame);
+                        
+                        if (currFrame >= totalFrames - 1) {
+                            // 播放完毕
+                            e.remove();
+                            
+                            setTimeout(() => {
+                                // 进入下一个阶段
+                                this.mainView.needUseNutrientsNum = 3;
+                                page.setProgerss(0, this.mainView.needUseNutrientsNum, false);
+                                this.mainView.useNutrientsNum = 0;
+                                page.mc_tree.gotoAndPlay("on");
+                            }, 500);
+                        }
+                    });
+                }, 300);
+            },
             openMainView() {
                 // 打开主要视图
                 // this.loginView.show = true;
 
                 this.mainView.show = true;
                 let page = mainPage.currPage.page;
+
+                // setProgerss(0, 2);
                 
                 setTimeout(() => {
                     
                     // 播放工具栏动画
-                    page.tools_bar.gotoAndPlay(1);
+                    // page.tools_bar.gotoAndPlay(1);
                     this.mainView.leftBar.show = true;
                     this.mainView.rightBar.show = true;
 
                     setTimeout(() => {
                         // 模拟养料数量变化
+                        page.mc_tree.tree.gotoAndPlay(1);
                         this.mainView.nutrientsNum = 2;
                         this.mainView.orderList.show = true;
+
+                        this.mainView.needUseNutrientsNum = 2;
+                        this.mainView.useNutrientsNum = 0;
+
+                        page.setProgerss(0, this.mainView.needUseNutrientsNum - this.mainView.useNutrientsNum);
+                        page.mc_tree.gotoAndPlay("on");
                     }, 1000);
 
                 }, 1000);
