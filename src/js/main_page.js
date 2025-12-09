@@ -181,6 +181,7 @@ function onPageInited(e) {
             }
 
             let addNutrients = function (num) {
+                // 添加养料
                 let max_x = lib.properties.width-100;
                 let min_x = 100;
 
