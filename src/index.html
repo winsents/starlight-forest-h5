@@ -29,21 +29,25 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/createjs.min.js"></script>
     <script src="js/vue.global.js"></script>
+    <script src="js/vant4.min.js"></script>
     <script src="js/axios.min.js"></script>
-    <script src="js/js.cookie.js"></script>
+<!--    <script src="js/js.cookie.js"></script>-->
     <script src="https://code.createjs.com/1.0.0/createjs.js"></script>
+    <script src="js/axios/api.js"></script>
+
+
     <script src="main.js?1658802655439"></script>
     <script src="js/misc.js?1658802655385"></script>
     <script src="js/page_util.js?1658802655385"></script>
     <script src="js/main_page.js?1658802655450"></script>
-    <script src="js/button.js?1658802655385"></script>
-    <script src="js/config.js?1658802655385"></script>
+<!--    <script src="js/button.js?1658802655385"></script>-->
+<!--    <script src="js/config.js?1658802655385"></script>-->
     <script src="js/scorll_view.js?1658802655415"></script>
     <script src="js/Text.js?1658802655385"></script>
     <script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
     <script src="js/weixin_ticket.js?1658802655412"></script>
     <script src="https://unpkg.com/js-bullets@0.0.1/dist/BulletJs.min.js"></script>
-    <script src="js/vant4.min.js"></script>
+
     <script>
         // eruda.init()
 
@@ -57,7 +61,7 @@
         var rowNum = 0;
         var music_state = true;
         var indexViewId = 1;
-        
+
         // ///////// 拖动相关
         var drager_ = {
             x: 0,
@@ -134,7 +138,7 @@
                             sRatio = Math.max(xRatio, yRatio);
                         }
                     }
-                    
+
                     domContainers[0].width = w * pRatio * sRatio;
                     domContainers[0].height = h * pRatio * sRatio;
                     domContainers.forEach(function (container) {
@@ -547,7 +551,7 @@
     <div id="App">
         <div id="animation_container" :class="{show: mainView.show}" style="background-color:rgba(255, 255, 255, 1.00); width:750px; height:1334px">
             <canvas id="canvas" width="750" height="1334" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-            <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:750px; height:1334px; position: absolute; left: 0px; top: 0px; display: block;">  
+            <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:750px; height:1334px; position: absolute; left: 0px; top: 0px; display: block;">
             </div>
             <div id="orderList" :class="{show: mainView.orderList.show}"
                 :style="{left: page1.orderList.left+'px', top: page1.orderList.toggle?'20px':page1.orderList.top+'px', width: page1.orderList.width+'px', height: page1.orderList.height+'px'}">
@@ -597,7 +601,7 @@
             <div class="login-view__bg"></div>
             <div style="flex: 1;">
                 <div class="image-block logo" style="left: 0.5rem; top: 0.5rem;">
-                    <img src="./images/logo.png">   
+                    <img src="./images/logo.png">
                 </div>
             </div>
             <div class="login-view__login_panel form">
@@ -688,6 +692,12 @@
         mounted() {
             this.init();
 
+            reqInstance.get("app/test").then(response => {
+                console.log("测试接口返回数据：", response.data);
+            }).catch(error => {
+                console.log(error);
+            });
+
             setTimeout(() => {
                 this.loadingView.show = false;
                 this.loginView.show = true;
@@ -745,7 +755,7 @@
 
                 //                 if(this.mainView.useNutrientsNum>=2) {
                                     // page.mc_tree.progress_bar.visible = true;
-                                    // page.mc_tree.mc_progress_val.visible = true;    
+                                    // page.mc_tree.mc_progress_val.visible = true;
                                     // page.mc_tree.progress_bar.alpha = 0;
                                     // page.mc_tree.mc_progress_val.alpha = 0;
 
@@ -823,7 +833,7 @@
             updateUseNutrientsNum () {
                 let page = mainPage.currPage.page;
 
-                if(this.mainView.useNutrientsNum>=this.mainView.needUseNutrientsNum) {   
+                if(this.mainView.useNutrientsNum>=this.mainView.needUseNutrientsNum) {
                     page.tools_bar.kettle.visible = true;
                     page.tools_bar.gotoAndPlay(1);
 
@@ -844,11 +854,11 @@
                         currFrame++
 
                         page.mc_tree.gotoAndStop(currFrame);
-                        
+
                         if (currFrame >= totalFrames - 1) {
                             // 播放完毕
                             e.remove();
-                            
+
                             setTimeout(() => {
                                 // 进入下一个阶段
                                 this.mainView.needUseNutrientsNum = 3;
@@ -868,9 +878,9 @@
                 let page = mainPage.currPage.page;
 
                 // setProgerss(0, 2);
-                
+
                 setTimeout(() => {
-                    
+
                     // 播放工具栏动画
                     // page.tools_bar.gotoAndPlay(1);
                     this.mainView.leftBar.show = true;
