@@ -180,24 +180,58 @@ function onPageInited(e) {
                 evt.stopPropagation();
             }
 
+            let addNutrients = function (num) {
+                // 添加养料
+                let max_x = lib.properties.width-100;
+                let min_x = 100;
+
+                let max_y = -300;
+                let min_y = -400;
+
+                for (let i = 0; i < num; i++) { 
+                    let nutrients = new lib.nutrients_mc();
+
+                    let x = randomNum(min_x + nutrients.getBounds().width / 2, max_x - nutrients.getBounds().width / 2);
+                    let y = randomNum(min_y + nutrients.getBounds().height / 2, max_y - nutrients.getBounds().height / 2);
+
+                    nutrients.y = 0;
+                    nutrients.x = x;
+                    nutrients.alpha = 0;
+                    
+                    page.mc_tree.addChild(nutrients);
+                    nutrients.addEventListener("click", e => {
+                        let ptMc = page.mc_tree.mc_pt;
+                        createjs.Tween.get(nutrients, { override: true }).to({ x: ptMc.x, y: ptMc.y, alpha: 0 }, 300);
+                        e.remove();
+
+                        App.mainView.nutrientsNum = Math.max(0, App.mainView.nutrientsNum - 1);
+                        App.mainView.useNutrientsNum++
+                    })
+
+                    createjs.Tween.get(nutrients, { override: true }).to({ y: y, alpha: 1 }, 500);
+                }
+            }
+
+            page.addNutrients = addNutrients;
+
             setProgerss(0, 0);
 
-            page.mc_tree.mc_s1.mc.addEventListener("click", e => { 
-                page.mc_tree.mc_s1.gotoAndPlay("used");
-                App.mainView.nutrientsNum = Math.max(0, App.mainView.nutrientsNum - 1);
-                App.mainView.useNutrientsNum++
-                // setProgerss(0.5, 1);
-                e.remove();
-            });
+            // page.mc_tree.mc_s1.mc.addEventListener("click", e => { 
+            //     page.mc_tree.mc_s1.gotoAndPlay("used");
+            //     App.mainView.nutrientsNum = Math.max(0, App.mainView.nutrientsNum - 1);
+            //     App.mainView.useNutrientsNum++
+            //     // setProgerss(0.5, 1);
+            //     e.remove();
+            // });
 
-            page.mc_tree.mc_s2.mc.addEventListener("click", e => { 
-                page.mc_tree.mc_s2.gotoAndPlay("used");
-                App.mainView.nutrientsNum = Math.max(0, App.mainView.nutrientsNum - 1);
-                App.mainView.useNutrientsNum++
-                e.remove();
-                // setProgerss(1, 0);
-                // page.mc_tree.tree.gotoAndPlay(1);
-            });
+            // page.mc_tree.mc_s2.mc.addEventListener("click", e => { 
+            //     page.mc_tree.mc_s2.gotoAndPlay("used");
+            //     App.mainView.nutrientsNum = Math.max(0, App.mainView.nutrientsNum - 1);
+            //     App.mainView.useNutrientsNum++
+            //     e.remove();
+            //     // setProgerss(1, 0);
+            //     // page.mc_tree.tree.gotoAndPlay(1);
+            // });
 
             page.tools_bar.kettle.addEventListener("mousedown", e => {
                 page.tools_bar.kettle.kettle.mc.alpha = 0;
