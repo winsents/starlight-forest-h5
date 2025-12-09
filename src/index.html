@@ -702,16 +702,18 @@
                     return;
                 }
 
-                if (newVal > 2) {
-                    newVal = 2;
-                }
+                // if (newVal > 2) {
+                //     newVal = 2;
+                // }
 
                 let page = mainPage.currPage.page;
 
                 // 播放养料变化动画
-                for (let i = 0; i < newVal; i++) {
-                     page.mc_tree[`mc_s${i + 1}`].gotoAndPlay(1);
-                }
+                // for (let i = 0; i < newVal; i++) {
+                //      page.mc_tree[`mc_s${i + 1}`].gotoAndPlay(1);
+                // }
+
+                page.addNutrients(newVal);
             },
             'mainView.useNutrientsNum'(newVal, oldVal) {
                 console.log('使用的养料数量变化了', newVal, oldVal, this.mainView.needUseNutrientsNum, mainPage.currPage.page);
@@ -840,7 +842,7 @@
                         let currFrame = page.mc_tree.currentFrame;
                         let totalFrames = page.mc_tree.totalFrames;
 
-                        console.log('## tree on tick', currFrame, totalFrames);
+                        // console.log('## tree on tick', currFrame, totalFrames);
                         currFrame++
 
                         page.mc_tree.gotoAndStop(currFrame);

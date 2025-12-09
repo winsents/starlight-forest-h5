@@ -1192,29 +1192,6 @@ if (reversed == null) { reversed = false; }
 p.nominalBounds = new cjs.Rectangle(-221.4,-63.4,285.9,209);
 
 
-(lib.元件15 = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// 图层_1
-	this.instance = new lib.元件6();
-	this.instance.setTransform(0,-41.5,1,1,0,0,0,41.5,41.5);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).to({y:-46.35},29).to({y:-41.5},30).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-41.5,-87.8,83,87.8);
-
-
 (lib.元件13 = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -1319,6 +1296,29 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = getMCSymbolPrototype(lib.元件1, new cjs.Rectangle(-1,0,97,112), null);
+
+
+(lib.nutrients_mc = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// 图层_1
+	this.instance = new lib.元件6();
+	this.instance.setTransform(0,-41.5,1,1,0,0,0,41.5,41.5);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).to({y:-46.35},29).to({y:-41.5},30).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-41.5,-87.8,83,87.8);
 
 
 (lib.元件5 = function(mode,startPosition,loop,reversed) {
@@ -1483,81 +1483,41 @@ if (reversed == null) { reversed = false; }
 p.nominalBounds = new cjs.Rectangle(0,-315,97,452);
 
 
-(lib.元件17复制 = function(mode,startPosition,loop,reversed) {
+(lib.元件15 = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
 	props.mode = mode;
 	props.startPosition = startPosition;
-	props.labels = {used:19};
+	props.labels = {};
 	props.loop = loop;
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
+	this.isSingleFrame = false;
 	// timeline functions:
 	this.frame_0 = function() {
-		this.stop();
-	}
-	this.frame_18 = function() {
-		this.stop();
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		this.alpha = 0;
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(18).call(this.frame_18).wait(18));
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// 图层_1
-	this.mc = new lib.元件15();
-	this.mc.name = "mc";
-	this.mc.setTransform(0,109.5,1,1,0,0,0,0,-41.5);
-	this.mc.alpha = 0;
-
-	this.instance = new lib.元件15("synched",59);
+	this.instance = new lib.nutrients_mc();
 	this.instance.setTransform(0,-41.5,1,1,0,0,0,0,-41.5);
-	this.instance._off = true;
 
-	this.timeline.addTween(cjs.Tween.get(this.mc).to({y:-41.5,alpha:1},17).to({_off:true},2).to({_off:false,regX:0.1,regY:-41.4,scaleX:0.6519,scaleY:0.6519,x:110.5,y:29.3,alpha:0},16).wait(1));
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(19).to({_off:false},0).to({_off:true,regX:0.1,regY:-41.4,scaleX:0.6519,scaleY:0.6519,x:110.5,y:29.3,alpha:0,mode:"independent"},16).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-41.5,-83,179,234);
-
-
-(lib.元件17 = function(mode,startPosition,loop,reversed) {
-if (loop == null) { loop = true; }
-if (reversed == null) { reversed = false; }
-	var props = new Object();
-	props.mode = mode;
-	props.startPosition = startPosition;
-	props.labels = {"used":20};
-	props.loop = loop;
-	props.reversed = reversed;
-	cjs.MovieClip.apply(this,[props]);
-
-	// timeline functions:
-	this.frame_0 = function() {
-		this.stop();
-	}
-	this.frame_19 = function() {
-		this.stop();
-	}
-
-	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(19).call(this.frame_19).wait(17));
-
-	// 图层_1
-	this.mc = new lib.元件15();
-	this.mc.name = "mc";
-	this.mc.setTransform(0,151.5,1,1,0,0,0,0,-41.5);
-	this.mc.alpha = 0;
-
-	this.timeline.addTween(cjs.Tween.get(this.mc).to({y:-41.5,alpha:1},17).wait(2).to({regX:0.1,regY:-41.4,scaleX:0.6519,scaleY:0.6519,x:-86.25,y:54.35,alpha:0},16).wait(1));
-
-	this._renderFirstFrame();
-
-}).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-113.3,-83,154.8,276);
+}).prototype = getMCSymbolPrototype(lib.元件15, new cjs.Rectangle(-41.5,-83,83,83), null);
 
 
 (lib.元件14 = function(mode,startPosition,loop,reversed) {
@@ -1642,19 +1602,12 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.mc_progress_val).wait(3).to({_off:false},0).to({x:186,y:17,alpha:1},8).wait(5).to({y:-97.95},9).to({y:188,alpha:0},13).wait(2));
 
-	// 图层_6
-	this.mc_s2 = new lib.元件17();
-	this.mc_s2.name = "mc_s2";
-	this.mc_s2.setTransform(432.2,-355.35,1,1,0,0,0,0,-41.5);
+	// 图层_9
+	this.mc_pt = new lib.元件15();
+	this.mc_pt.name = "mc_pt";
+	this.mc_pt.setTransform(316,-140.85);
 
-	this.timeline.addTween(cjs.Tween.get(this.mc_s2).wait(40));
-
-	// 图层_3
-	this.mc_s1 = new lib.元件17复制();
-	this.mc_s1.name = "mc_s1";
-	this.mc_s1.setTransform(176.75,-309.6,1,1,0,0,0,0,-41.5);
-
-	this.timeline.addTween(cjs.Tween.get(this.mc_s1).wait(40));
+	this.timeline.addTween(cjs.Tween.get(this.mc_pt).wait(40));
 
 	// 图层_1
 	this.tree = new lib.元件14();
@@ -1665,14 +1618,14 @@ if (reversed == null) { reversed = false; }
 
 	// 图层_5
 	this.instance = new lib.元件12("synched",0);
-	this.instance.setTransform(300.95,-135.55,0.5993,0.5993,0,0,0,-580,-0.1);
+	this.instance.setTransform(302.95,-135.55,0.5993,0.5993,0,0,0,-580,-0.1);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(40));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-46.6,-417,695.1,660);
+p.nominalBounds = new cjs.Rectangle(-44.6,-417,695.1,660);
 
 
 (lib.元件7 = function(mode,startPosition,loop,reversed) {
@@ -1813,7 +1766,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.page_1, new cjs.Rectangle(-9.6,-146.2,839.6,1623.3), null);
+}).prototype = getMCSymbolPrototype(lib.page_1, new cjs.Rectangle(-7.6,-146.2,837.6,1623.3), null);
 
 
 // stage content:
@@ -1847,7 +1800,7 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/main_atlas_P_1.png?1765293951824", id:"main_atlas_P_1"}
+		{src:"images/main_atlas_P_1.png?1765299609111", id:"main_atlas_P_1"}
 	],
 	preloads: []
 };
