@@ -731,7 +731,6 @@
 
                 // needUseNutrientsNum
                 let page = mainPage.currPage.page;
-
                 page.setProgerss(newVal/this.mainView.needUseNutrientsNum, this.mainView.needUseNutrientsNum-newVal);
 
                 this.updateUseNutrientsNum();
@@ -886,15 +885,15 @@
                 setTimeout(() => {
                     // 播放工具栏动画
                     // page.tools_bar.gotoAndPlay(1);
-                    this.mainView.leftBar.show = true;
-                    this.mainView.rightBar.show = true;
+                    // this.mainView.leftBar.show = true;
+                    // this.mainView.rightBar.show = true;
 
                     setTimeout(() => {
                         // 模拟养料数量变化
                         // page.mc_tree.tree.gotoAndPlay(1);
                         this.updateTreeState();
                         this.mainView.nutrientsNum = 2;
-                        this.mainView.orderList.show = true;
+                        // this.mainView.orderList.show = true;
 
                         this.mainView.needUseNutrientsNum = 2;
                         this.mainView.useNutrientsNum = 0;
@@ -967,8 +966,6 @@
 
                     currFrame++
                     page.mc_tree.tree.gotoAndStop(currFrame);
-
-                    // console.log('##', _startFrame, currFrame-_startFrame, stateName);
                     
                     if (currFrame >= totalFrames - 1) {
                         // 播放完毕
@@ -983,6 +980,10 @@
                             this.mainView.needUseNutrientsNum = 3;
                             page.setProgerss(0, this.mainView.needUseNutrientsNum, false);
                             page.mc_tree.gotoAndPlay("on");
+
+                            this.mainView.leftBar.show = true;
+                            this.mainView.rightBar.show = true;
+                            this.mainView.orderList.show = true;
                         }, 1000);
                     }
                 })
