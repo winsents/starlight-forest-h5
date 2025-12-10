@@ -13,7 +13,7 @@
 }
 .login-view .logo {
   opacity: 0;
-  width: 2.47rem;
+  width: 3.45rem;
   position: absolute;
   transition: opacity 0.5s ease-in-out;
 }
