@@ -996,9 +996,15 @@
                         }
                     }
 
-                    if (this.mainView.useNutrientsNum > _startNutrientsNum && this.mainView.useNutrientsNum <= stateData.nutrientsNum) {
+                    if(stateNameSuffix=="end") {
+                        stateData.nutrientsNum = 2;
+                    }
+
+                    if (this.mainView.useNutrientsNum >= stateData.nutrientsNum) {
+                    // if (this.mainView.useNutrientsNum > _startNutrientsNum && this.mainView.useNutrientsNum <= stateData.nutrientsNum) {
                         let offsetNutrientsNum = (stateData.nutrientsNum - _startNutrientsNum);
-                        let endFrame = _startFrame+stateData.totleFrames/offsetNutrientsNum*(this.mainView.useNutrientsNum-_startNutrientsNum);
+                        // let endFrame = _startFrame+stateData.totleFrames/offsetNutrientsNum*(this.mainView.useNutrientsNum-_startNutrientsNum);
+                        let endFrame = _startFrame + stateData.totleFrames;// / offsetNutrientsNum * (this.mainView.useNutrientsNum - _startNutrientsNum);
 
                         // console.log('## endFrame', endFrame, currFrame, stateName, totalFrames);
 
@@ -1016,9 +1022,11 @@
 
                     if (stateNameSuffix == "end") {
                         // 播放头到状态段末尾
-                        if (this.mainView.useNutrientsNum == stateData.nutrientsNum) {
+                        if (this.mainView.useNutrientsNum < stateData.nutrientsNum) {
                             e.remove();
                             return;
+                        } else {
+                            
                         }
                     }
 
