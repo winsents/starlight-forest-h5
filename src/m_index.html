@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="authoring-tool" content="Adobe_Animate_CC">
     <title>星光森林</title>
     <!-- write your code here -->
@@ -30,16 +30,19 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/createjs.min.js"></script>
     <script src="js/vue.global.js"></script>
-    <script src="js/axios.min.js"></script>
     <script src="js/vant4.min.js"></script>
-    <script src="js/js.cookie.js"></script>
+    <script src="js/axios.min.js"></script>
+    <!--    <script src="js/js.cookie.js"></script>-->
     <script src="https://code.createjs.com/1.0.0/createjs.js"></script>
     <script src="js/axios/api.js?v4"></script>
+
 
     <script src="main.js?1658802655439"></script>
     <script src="js/misc.js?1658802655385"></script>
     <script src="js/page_util.js?1658802655385"></script>
     <script src="js/main_page.js?1658802655450"></script>
+    <!--    <script src="js/button.js?1658802655385"></script>-->
+    <!--    <script src="js/config.js?1658802655385"></script>-->
     <script src="js/scorll_view.js?1658802655415"></script>
     <script src="js/Text.js?1658802655385"></script>
     <script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
@@ -546,92 +549,92 @@
 </head>
 
 <body style="margin:0px;">
-    <div id="App">
-        <div id="animation_container" :class="{show: mainView.show}" style="background-color:rgba(255, 255, 255, 1.00); width:750px; height:1334px">
-            <canvas id="canvas" width="750" height="1334" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-            <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:750px; height:1334px; position: absolute; left: 0px; top: 0px; display: block;">
+<div id="App">
+    <div id="animation_container" :class="{show: mainView.show}" style="background-color:rgba(255, 255, 255, 1.00); width:750px; height:1334px">
+        <canvas id="canvas" width="750" height="1334" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+        <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:750px; height:1334px; position: absolute; left: 0px; top: 0px; display: block;">
+        </div>
+        <div id="orderList" :class="{show: mainView.orderList.show}"
+             :style="{left: page1.orderList.left+'px', top: page1.orderList.toggle?'20px':page1.orderList.top+'px', width: page1.orderList.width+'px', height: page1.orderList.height+'px'}">
+            <div class="btn-groups">
+                <div class="tap"></div>
+                <div class="tap"></div>
             </div>
-            <div id="orderList" :class="{show: mainView.orderList.show}"
-                :style="{left: page1.orderList.left+'px', top: page1.orderList.toggle?'20px':page1.orderList.top+'px', width: page1.orderList.width+'px', height: page1.orderList.height+'px'}">
-                <div class="btn-groups">
-                    <div class="tap"></div>
-                    <div class="tap"></div>
-                </div>
-                <div class="scorll-view" @scroll="onOrderListScroll">
-                    <ul>
-                        <li v-for="n in 20" :key="n">
-                            <div class="order">01</div>
-                            <div class="icon">
-                                <img src="./images/user-icon.png" />
-                            </div>
-                            <div class="detail">
-                                <div class="name">工号：AAAAAA</div>
-                                <div class="area">大区：华北大区</div>
-                            </div>
-                            <div class="score">养料100</div>
-                        </li>
-                    </ul>
-                </div>
+            <div class="scorll-view" @scroll="onOrderListScroll">
+                <ul>
+                    <li v-for="n in 20" :key="n">
+                        <div class="order">01</div>
+                        <div class="icon">
+                            <img src="./images/user-icon.png" />
+                        </div>
+                        <div class="detail">
+                            <div class="name">工号：AAAAAA</div>
+                            <div class="area">大区：华北大区</div>
+                        </div>
+                        <div class="score">养料100</div>
+                    </li>
+                </ul>
             </div>
+        </div>
 
-            <div class="left-bar" :class="{show: mainView.leftBar.show}">
-                <img src="./images/left-bar.png" />
-                <div class="frame">
-                    <div class="icon">
-                        <img v-if="user" :src="user.avatarUrl" />
-                        <img v-else src="./images/user-icon.png" />
-                    </div>
-                    <div class="content">
-                        <div class="name">工号{{ loginView.username?loginView.username:'XXX'}}</div>
-                        <div class="desc">000 养料</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="right-bar" :class="{show: mainView.rightBar.show}">
-                <img src="./images/right-bar.png" />
+        <div class="left-bar" :class="{show: mainView.leftBar.show}">
+            <img src="./images/left-bar.png" />
+            <div class="frame">
                 <div class="icon">
-                    <img src="./images/icon.png" />
+                    <img v-if="user" :src="user.avatarUrl" />
+                    <img v-else src="./images/user-icon.png" />
+                </div>
+                <div class="content">
+                    <div class="name">工号{{ loginView.username?loginView.username:'XXX'}}</div>
+                    <div class="desc">000 养料</div>
                 </div>
             </div>
         </div>
 
-        <div class="login-view" :class="{show: loginView.show}">
-            <div class="login-view__bg"></div>
-            <div style="flex: 1;">
-                <div class="image-block logo" style="left: 0.5rem; top: 0.5rem;">
-                    <img src="./images/logo.png">
-                </div>
-            </div>
-            <div class="login-view__login_panel form">
-                <div class="form-title">账号</div>
-                <div class="form-content">
-                    <input type="text" placeholder="请输入账号" v-model="loginView.username" />
-                </div>
-                <div class="form-title">密码</div>
-                <div class="form-content">
-                    <input type="password" placeholder="请输入账号" v-model="loginView.password" />
-                </div>
-                <div class="form-desc">
-                    <a href="#">忘记密码</a>
-                </div>
-                <div class="form-button" @click="onLogin">
-                    登录
-                </div>
+        <div class="right-bar" :class="{show: mainView.rightBar.show}">
+            <img src="./images/right-bar.png" />
+            <div class="icon">
+                <img src="./images/icon.png" />
             </div>
         </div>
-
-        <div id="loading" class="loading-view" :class="{show: loadingView.show}">
-            <div class="loading-view__bg"></div>
-            <div class="loading-view_bar">
-                <div class="image-block loading-title">
-                    <img src="./images/loading-title.png" />
-                </div>
-            </div>
-        </div>
-
-        <audio src="" id="Jaudio" class="media-audio" preload loop="loop"></audio>
     </div>
+
+    <div class="login-view" :class="{show: loginView.show}">
+        <div class="login-view__bg"></div>
+        <div style="flex: 1;">
+            <div class="image-block logo" style="left: 0.5rem; top: 0.5rem;">
+                <img src="./images/logo.png">
+            </div>
+        </div>
+        <div class="login-view__login_panel form">
+            <div class="form-title">账号</div>
+            <div class="form-content">
+                <input type="text" placeholder="请输入账号" v-model="loginView.username" />
+            </div>
+            <div class="form-title">密码</div>
+            <div class="form-content">
+                <input type="password" placeholder="请输入账号" v-model="loginView.password" />
+            </div>
+            <div class="form-desc">
+                <a href="#">忘记密码</a>
+            </div>
+            <div class="form-button" @click="onLogin">
+                登录
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading-view" :class="{show: loadingView.show}">
+        <div class="loading-view__bg"></div>
+        <div class="loading-view_bar">
+            <div class="image-block loading-title">
+                <img src="./images/loading-title.png" />
+            </div>
+        </div>
+    </div>
+
+    <audio src="" id="Jaudio" class="media-audio" preload loop="loop"></audio>
+</div>
 </body>
 <script>
     let screen = null;
@@ -675,18 +678,7 @@
                     useNutrientsNum: 0,
                     // 当前阶段需要使用的养料数量
                     needUseNutrientsNum: 0,
-                    treeStates: {
-                        start1: {
-                            nutrientsNum: 0,
-                            totleFrames: 50,
-                        },
-                        start2: {
-                            nutrientsNum: 2,
-                            nutrientsStartNum: 0,
-                            totleFrames: 74,
-                            finished: true
-                        }
-                    },
+
                     leftBar: {
                         show: false
                     },
@@ -707,22 +699,22 @@
                 reqInstance.get("app/user/info").then(res => {
                     this.user = res.data;
 
-                    // if (this.user.isLogin){
-                    //     this.loadingView.show = false;
-                    //     this.openMainView();
-                    // }else {
-                    //     this.loadingView.show = false;
-                    //     this.loginView.show = true;
-                    // }
+                    if (this.user.isLogin){
+                        this.loadingView.show = false;
+                        this.openMainView();
+                    }else {
+                        this.loadingView.show = false;
+                        this.loginView.show = true;
+                    }
                 }).catch(error => {
                     console.log(error);
                 });
             })
 
-            setTimeout(() => {
-                this.loadingView.show = false;
-                this.loginView.show = true;
-            }, 5000);
+            // setTimeout(() => {
+            //     this.loadingView.show = false;
+            //     this.loginView.show = true;
+            // }, 5000);
         },
         watch: {
             'mainView.nutrientsNum'(newVal, oldVal) {
@@ -751,6 +743,7 @@
 
                 // needUseNutrientsNum
                 let page = mainPage.currPage.page;
+
                 page.setProgerss(newVal/this.mainView.needUseNutrientsNum, this.mainView.needUseNutrientsNum-newVal);
 
                 this.updateUseNutrientsNum();
@@ -776,13 +769,13 @@
                 //                 e.remove();
 
                 //                 if(this.mainView.useNutrientsNum>=2) {
-                                    // page.mc_tree.progress_bar.visible = true;
-                                    // page.mc_tree.mc_progress_val.visible = true;
-                                    // page.mc_tree.progress_bar.alpha = 0;
-                                    // page.mc_tree.mc_progress_val.alpha = 0;
+                // page.mc_tree.progress_bar.visible = true;
+                // page.mc_tree.mc_progress_val.visible = true;
+                // page.mc_tree.progress_bar.alpha = 0;
+                // page.mc_tree.mc_progress_val.alpha = 0;
 
-                                    // createjs.Tween.get(page.mc_tree.progress_bar, { override: true }).to({ alpha: 1 }, 400);
-                                    // createjs.Tween.get(page.mc_tree.mc_progress_val, { override: true }).to({ alpha: 1 }, 400);
+                // createjs.Tween.get(page.mc_tree.progress_bar, { override: true }).to({ alpha: 1 }, 400);
+                // createjs.Tween.get(page.mc_tree.mc_progress_val, { override: true }).to({ alpha: 1 }, 400);
 
                 //                     page.tools_bar.kettle.visible = true;
                 //                     page.tools_bar.kettle.gotoAndPlay(1);
@@ -858,48 +851,41 @@
             },
             onLogin() {
                 console.log('登录', this.loginView.username, this.loginView.password);
-                // 登录逻辑
-                this.loginView.show = false;
-                this.openMainView();
+                if (!this.loginView.username || this.loginView.username.length ===0){
+                    vant.showToast('请输入账号');
+                    return;
+                }
+                if (!this.loginView.password || this.loginView.password.length ===0){
+                    vant.showToast('请输入密码');
+                    return;
+                }
+
+                this.loginView.username = this.loginView.username.trim();
+                this.loginView.password = this.loginView.password.trim();
 
 
 
-                // if (!this.loginView.username || this.loginView.username.length ===0){
-                //     vant.showToast('请输入账号');
-                //     return;
-                // }
-                // if (!this.loginView.password || this.loginView.password.length ===0){
-                //     vant.showToast('请输入密码');
-                //     return;
-                // }
-                //
-                // this.loginView.username = this.loginView.username.trim();
-                // this.loginView.password = this.loginView.password.trim();
-                //
-                //
-                //
-                // reqInstance.post("app/user/login", {
-                //     userName: this.loginView.username,
-                //     passWord: this.loginView.password
-                // }).then(res => {
-                //
-                //     this.loginView.show = false;
-                //     this.openMainView();
-                // }).catch(error => {
-                //     console.log(error);
-                //     vant.showToast('账号或密码错误');
-                // });
+                reqInstance.post("app/user/login", {
+                    userName: this.loginView.username,
+                    passWord: this.loginView.password
+                }).then(res => {
+
+                    this.loginView.show = false;
+                    this.openMainView();
+                }).catch(error => {
+                    console.log(error);
+                    vant.showToast('账号或密码错误');
+                });
             },
             updateUseNutrientsNum () {
                 let page = mainPage.currPage.page;
 
                 if(this.mainView.useNutrientsNum>=this.mainView.needUseNutrientsNum) {
-                    // page.tools_bar.kettle.visible = true;
-                    // page.tools_bar.gotoAndPlay(1);
-                    // this.updateTreeState();
-                }
+                    page.tools_bar.kettle.visible = true;
+                    page.tools_bar.gotoAndPlay(1);
 
-                this.updateTreeState();
+                    this.updateTreeState();
+                }
             },
             updateTreeState() {
                 let page = mainPage.currPage.page;
@@ -941,17 +927,17 @@
                 // setProgerss(0, 2);
 
                 setTimeout(() => {
+
                     // 播放工具栏动画
                     // page.tools_bar.gotoAndPlay(1);
-                    // this.mainView.leftBar.show = true;
-                    // this.mainView.rightBar.show = true;
+                    this.mainView.leftBar.show = true;
+                    this.mainView.rightBar.show = true;
 
                     setTimeout(() => {
                         // 模拟养料数量变化
-                        // page.mc_tree.tree.gotoAndPlay(1);
-                        this.updateTreeState();
+                        page.mc_tree.tree.gotoAndPlay(1);
                         this.mainView.nutrientsNum = 2;
-                        // this.mainView.orderList.show = true;
+                        this.mainView.orderList.show = true;
 
                         this.mainView.needUseNutrientsNum = 2;
                         this.mainView.useNutrientsNum = 0;
@@ -965,86 +951,6 @@
                 // setTimeout(() => {
                 //     this.mainView.orderList.show = true;
                 // }, 1500);
-            },
-            updateTreeState() {
-                let page = mainPage.currPage.page;
-
-                // 当前播放状态标签
-                let _currLabel = null;
-                let _startFrame = null;
-                let _currState = null;
-                let _startNutrientsNum = 0;
-
-                page.mc_tree.tree.addEventListener("tick", (e) => {
-                    // 树动画播放完毕
-                    let currFrame = page.mc_tree.tree.currentFrame;
-                    let totalFrames = page.mc_tree.tree.totalFrames;
-                    let currFrameLabel = page.mc_tree.tree.currentLabel;
-
-                    let stateName = currFrameLabel.split("_")[0];
-                    let stateNameSuffix = currFrameLabel.split("_")[1];
-
-                    let stateData = this.mainView.treeStates[stateName];
-
-                    if(_currLabel!=currFrameLabel) {
-                        _currLabel = currFrameLabel;
-
-                        if(_currState!=stateName) {
-                            _currState = stateName;
-                            _startFrame = currFrame;
-                            _startNutrientsNum = stateData.nutrientsStartNum;
-                        }
-                    }
-
-                    if (this.mainView.useNutrientsNum > _startNutrientsNum && this.mainView.useNutrientsNum <= stateData.nutrientsNum) {
-                        let offsetNutrientsNum = (stateData.nutrientsNum - _startNutrientsNum);
-                        let endFrame = _startFrame+stateData.totleFrames/offsetNutrientsNum*(this.mainView.useNutrientsNum-_startNutrientsNum);
-
-                        // console.log('## endFrame', endFrame, currFrame, stateName, totalFrames);
-
-                        if(currFrame>endFrame) {
-                            currFrame++
-                            page.mc_tree.tree.gotoAndStop(currFrame);
-
-                            currFrameLabel = page.mc_tree.tree.currentLabel;
-                            stateNameSuffix = currFrameLabel.split("_")[1];
-
-                            e.remove();
-                            return;
-                        }
-                    }
-
-                    if (stateNameSuffix == "end") {
-                        // 播放头到状态段末尾
-                        if (this.mainView.useNutrientsNum == stateData.nutrientsNum) {
-                            e.remove();
-                            return;
-                        }
-                    }
-
-                    currFrame++
-                    page.mc_tree.tree.gotoAndStop(currFrame);
-
-                    if (currFrame >= totalFrames - 1) {
-                        // 播放完毕
-                        e.remove();
-                        page.mc_tree.gotoAndPlay("off");
-
-                        page.tools_bar.kettle.visible = true;
-                        page.tools_bar.gotoAndPlay(1);
-
-                        setTimeout(() => {
-                            // 进入下一个阶段
-                            this.mainView.needUseNutrientsNum = 3;
-                            page.setProgerss(0, this.mainView.needUseNutrientsNum, false);
-                            page.mc_tree.gotoAndPlay("on");
-
-                            this.mainView.leftBar.show = true;
-                            this.mainView.rightBar.show = true;
-                            this.mainView.orderList.show = true;
-                        }, 1000);
-                    }
-                })
             },
             tokenByCode(callback){
                 reqInstance.get("user/token_by_code",{
