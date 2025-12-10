@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"main_atlas_P_1", frames: [[0,0,1170,2532],[674,3334,606,168],[0,3442,672,529],[1049,3302,19,27],[1070,3302,19,27],[1080,3171,19,27],[663,3392,9,27],[624,3334,19,27],[645,3363,18,27],[990,3045,55,79],[761,3265,330,35],[157,4067,205,23],[822,3302,67,23],[489,2830,270,502],[645,3334,19,27],[624,3392,18,27],[644,3392,17,27],[624,3363,19,27],[1047,3045,63,59],[1093,3265,109,49],[761,3302,59,28],[983,2960,83,83],[891,3129,62,84],[364,4067,75,24],[997,3302,50,25],[1025,3126,53,71],[955,3129,68,70],[891,3052,97,75],[0,2534,487,906],[761,2830,128,390],[157,3973,153,77],[548,3973,127,72],[548,4047,142,49],[312,3973,127,92],[489,3334,133,94],[891,2830,159,128],[441,3973,105,107],[891,2960,90,90],[0,3973,155,116],[1080,3144,50,25],[1080,3106,93,36],[891,3302,51,25],[944,3302,51,25],[489,2534,1160,294],[761,3222,338,41]]}
+		{name:"main_atlas_P_1", frames: [[0,0,1170,2532],[489,2979,606,168],[1117,3292,19,27],[1138,3292,19,27],[987,3258,19,27],[1150,3359,9,27],[781,3322,19,27],[761,3228,18,27],[1028,3359,55,79],[829,3322,330,35],[910,3292,205,23],[0,3823,67,23],[1162,2979,270,502],[802,3322,19,27],[802,3351,18,27],[0,3875,17,27],[489,2534,672,443],[781,3351,19,27],[1085,3359,63,59],[650,3228,109,49],[1258,2926,59,28],[0,3738,83,83],[1097,2979,62,84],[910,3258,75,24],[1109,3192,50,25],[1097,3065,53,71],[958,3359,68,70],[805,3149,97,75],[0,2534,487,906],[1163,2534,128,390],[650,3149,153,77],[829,3359,127,72],[1017,3241,142,49],[781,3228,127,92],[646,3279,133,94],[489,3149,159,128],[910,3149,105,107],[1017,3149,90,90],[489,3279,155,116],[0,3848,50,25],[1163,2926,93,36],[1109,3138,51,25],[1109,3165,51,25],[0,3442,1160,294],[489,3397,338,41]]}
 ];
 
 
@@ -41,105 +41,105 @@ lib.ssMetadata = [
 
 
 
-(lib.Bitmap1 = function() {
+(lib.Bitmap101111111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap101111111111111111111 = function() {
+(lib.Bitmap11111111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap11111111111111111111 = function() {
+(lib.Bitmap12111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap12111111111111111 = function() {
+(lib.Bitmap13111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap13111111111111111 = function() {
+(lib.Bitmap14111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap14111111111111111 = function() {
+(lib.Bitmap151111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap151111111111111111 = function() {
+(lib.Bitmap2 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap2 = function() {
+(lib.Bitmap3 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap3 = function() {
+(lib.Bitmap4 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(10);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap4 = function() {
+(lib.Bitmap5 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(11);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap5 = function() {
+(lib.Bitmap6 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(12);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap6 = function() {
+(lib.Bitmap6111111111111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(13);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap6111111111111111111111111 = function() {
+(lib.Bitmap71111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(14);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap71111111111111111 = function() {
+(lib.Bitmap81111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(15);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap81111111111111111 = function() {
+(lib.Bitmap9 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(16);
 }).prototype = p = new cjs.Sprite();
@@ -901,14 +901,14 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// 图层_1
-	this.instance = new lib.Bitmap1();
-	this.instance.setTransform(0,-529);
+	this.instance = new lib.Bitmap9();
+	this.instance.setTransform(0,-410,1,0.9255);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.元件8, new cjs.Rectangle(0,-529,672,529), null);
+}).prototype = getMCSymbolPrototype(lib.元件8, new cjs.Rectangle(0,-410,672,410), null);
 
 
 (lib.元件6 = function(mode,startPosition,loop,reversed) {
@@ -1693,7 +1693,7 @@ if (reversed == null) { reversed = false; }
 	this.timeline.addTween(cjs.Tween.get(this).wait(49).call(this.frame_49).wait(75).call(this.frame_124).wait(1));
 
 	// 图层_3
-	this.instance = new lib.元件32("synched",0);
+	this.instance = new lib.元件32();
 	this.instance.setTransform(-13.55,2.85,0.3481,0.2802,0,0,0,21.4,894);
 	this.instance.alpha = 0;
 	this.instance._off = true;
@@ -1722,7 +1722,7 @@ if (reversed == null) { reversed = false; }
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-217.8,-498.5,418.4,565.6);
+p.nominalBounds = new cjs.Rectangle(-217.8,-498.6,418.4,565.7);
 
 
 (lib.元件9 = function(mode,startPosition,loop,reversed) {
@@ -1973,7 +1973,7 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/main_atlas_P_1.png?1765363233528", id:"main_atlas_P_1"}
+		{src:"images/main_atlas_P_1.png?1765369614613", id:"main_atlas_P_1"}
 	],
 	preloads: []
 };

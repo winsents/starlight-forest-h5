@@ -2,7 +2,7 @@
     position: absolute;
     background-image: url(../images/order-list-bg.png);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100% auto;
     transform: translateY(100%);
     transition: transform 0.5s ease-in-out, top 0.5s ease-in-out;
     display: flex;

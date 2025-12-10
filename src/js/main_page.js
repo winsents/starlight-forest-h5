@@ -45,9 +45,12 @@ function onPageInited(e) {
             
             let pt = page.localToGlobal(page.mc_order_list_rt.x, page.mc_order_list_rt.y);
             App.page1.orderList.left = pt.x / canvasScale;
-            App.page1.orderList.top = (page.tools_bar.y + 50) / canvasScale;
+            App.page1.orderList.top = (pt.y - page.mc_order_list_rt.getBounds().height) / canvasScale;
             
             App.page1.orderList.closeY = App.page1.orderList.top;
+
+            page.tools_bar.y = (pt.y - page.mc_order_list_rt.getBounds().height - 50);
+            page.mc_tree.y = page.tools_bar.y - 180;
 
             page.kettle.visible = false;
             page.kettle.state = "off";
