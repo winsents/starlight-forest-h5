@@ -25,6 +25,7 @@
     <!--    <link href="css/index.css" type="text/css" rel="stylesheet">-->
 
     <link href="css/css.css" type="text/css" rel="stylesheet">
+    <link href="css/vant_css.css" type="text/css" rel="stylesheet">
     <script src="js/rem.js"></script>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/createjs.min.js"></script>
@@ -33,7 +34,7 @@
     <script src="js/axios.min.js"></script>
 <!--    <script src="js/js.cookie.js"></script>-->
     <script src="https://code.createjs.com/1.0.0/createjs.js"></script>
-    <script src="js/axios/api.js"></script>
+    <script src="js/axios/api.js?v4"></script>
 
 
     <script src="main.js?1658802655439"></script>
@@ -580,11 +581,12 @@
                 <img src="./images/left-bar.png" />
                 <div class="frame">
                     <div class="icon">
-                        <img src="./images/user-icon.png" />
+                        <img v-if="user" :src="user.avatarUrl" />
+                        <img v-else src="./images/user-icon.png" />
                     </div>
                     <div class="content">
-                        <div class="name">工号XXX</div>
-                        <div class="desc">000养料</div>
+                        <div class="name">工号{{ loginView.username?loginView.username:'XXX'}}</div>
+                        <div class="desc">000 养料</div>
                     </div>
                 </div>
             </div>
@@ -686,22 +688,33 @@
                     orderList: {
                         show: false
                     }
-                }
+                },
+                user:null
             }
         },
         mounted() {
             this.init();
 
-            reqInstance.get("app/test").then(response => {
-                console.log("测试接口返回数据：", response.data);
-            }).catch(error => {
-                console.log(error);
-            });
+            this.dataInit(()=>{
+                reqInstance.get("app/user/info").then(res => {
+                    this.user = res.data;
 
-            setTimeout(() => {
-                this.loadingView.show = false;
-                this.loginView.show = true;
-            }, 5000);
+                    if (this.user.isLogin){
+                        this.loadingView.show = false;
+                        this.openMainView();
+                    }else {
+                        this.loadingView.show = false;
+                        this.loginView.show = true;
+                    }
+                }).catch(error => {
+                    console.log(error);
+                });
+            })
+
+            // setTimeout(() => {
+            //     this.loadingView.show = false;
+            //     this.loginView.show = true;
+            // }, 5000);
         },
         watch: {
             'mainView.nutrientsNum'(newVal, oldVal) {
@@ -798,6 +811,16 @@
                     this.resloadFinish();
                 })
             },
+            dataInit(callback) {
+                if (sessionStorage.getItem("starlight-forest_refresh_token")){
+                    if (callback) callback();
+                } else {
+                    this.tokenByCode((refresh_token)=>{
+                        sessionStorage.setItem('starlight-forest_refresh_token', refresh_token)
+                        if (callback) callback();
+                    })
+                }
+            },
             resloadFinish() {
                 canvas = document.getElementById("canvas");
                 anim_container = document.getElementById("animation_container");
@@ -828,9 +851,31 @@
             },
             onLogin() {
                 console.log('登录', this.loginView.username, this.loginView.password);
-                // 登录逻辑
-                this.loginView.show = false;
-                this.openMainView();
+                if (!this.loginView.username || this.loginView.username.length ===0){
+                    vant.showToast('请输入账号');
+                    return;
+                }
+                if (!this.loginView.password || this.loginView.password.length ===0){
+                    vant.showToast('请输入密码');
+                    return;
+                }
+
+                this.loginView.username = this.loginView.username.trim();
+                this.loginView.password = this.loginView.password.trim();
+
+
+
+                reqInstance.post("app/user/login", {
+                    userName: this.loginView.username,
+                    passWord: this.loginView.password
+                }).then(res => {
+
+                    this.loginView.show = false;
+                    this.openMainView();
+                }).catch(error => {
+                    console.log(error);
+                    vant.showToast('账号或密码错误');
+                });
             },
             updateUseNutrientsNum () {
                 let page = mainPage.currPage.page;
@@ -906,6 +951,23 @@
                 // setTimeout(() => {
                 //     this.mainView.orderList.show = true;
                 // }, 1500);
+            },
+            tokenByCode(callback){
+                reqInstance.get("user/token_by_code",{
+                    params: {
+                        token_code: getQueryVariable("token_code")
+                    }
+                }).then(response => {
+                    let extra = response.extra;
+
+                    //测试环境使用
+                    localStorage.setItem('starlight_forest_token', extra.access_token)
+
+
+                    if (callback) callback(extra.refresh_token);
+                }).catch(error => {
+                    console.log(error);
+                });
             }
         }
     }).use(vant).use(vant.Lazyload).mount('#App');
