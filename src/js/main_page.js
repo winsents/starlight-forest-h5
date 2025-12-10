@@ -90,11 +90,8 @@ function onPageInited(e) {
             }
 
             let setProgerss = function (value, digital, animation = true) {
-
                 if(value<0) value = 0;
                 if(value>1) value = 1;
-
-                // page.mc_tree.progress_bar.progress.scaleX = value;
 
                 if (animation) {
                     createjs.Tween.get(page.mc_tree.progress_bar.progress, { override: true }).to({ scaleX: value }, 500).addEventListener("change", (event) => { });

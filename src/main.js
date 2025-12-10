@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"main_atlas_P_1", frames: [[0,0,1170,2532],[0,2534,672,529],[1148,2919,19,27],[1148,2948,19,27],[1160,2977,19,27],[1194,2865,9,27],[1169,2919,19,27],[1190,2919,18,27],[1026,2963,55,79],[1096,2613,330,35],[1022,2840,205,23],[1144,3025,67,23],[1169,2948,19,27],[1190,2948,18,27],[1202,2977,17,27],[1181,2977,19,27],[1083,2938,63,59],[911,2840,109,49],[1083,3025,59,28],[933,2695,83,83],[1018,2695,62,84],[1083,2999,75,24],[1142,2865,50,25],[1034,2865,53,71],[964,2891,68,70],[927,2972,97,75],[674,2534,128,390],[1096,2534,153,77],[835,2898,127,72],[911,2789,142,49],[804,2695,127,92],[961,2534,133,94],[674,2926,159,128],[804,2789,105,107],[835,2972,90,90],[804,2534,155,116],[1142,2892,50,25],[1055,2781,93,36],[1089,2865,51,25],[1089,2892,51,25],[0,3065,1160,294],[804,2652,338,41]]}
+		{name:"main_atlas_P_1", frames: [[0,0,1170,2532],[674,3838,606,168],[0,3442,672,529],[624,3973,19,27],[645,3973,19,27],[880,4059,19,27],[1033,3278,9,27],[901,4059,19,27],[964,4059,18,27],[1033,3124,55,79],[157,4051,330,35],[157,3973,205,23],[502,3973,67,23],[489,2830,270,502],[922,4059,19,27],[674,3334,270,502],[984,4059,18,27],[761,2830,270,502],[1004,4059,17,27],[943,4059,19,27],[1076,3278,63,59],[1109,4008,109,49],[441,3973,59,28],[1024,4008,83,83],[1220,4008,62,84],[364,3973,75,24],[1109,4059,50,25],[1033,3205,53,71],[1033,3052,68,70],[781,4008,97,75],[0,2534,487,906],[946,3334,128,390],[497,4008,153,77],[652,4008,127,72],[880,4008,142,49],[946,3726,127,92],[489,3334,133,94],[1033,2830,159,128],[1075,3726,105,107],[1033,2960,90,90],[0,3973,155,116],[1161,4059,50,25],[1088,3205,93,36],[571,3973,51,25],[1088,3243,51,25],[489,2534,1160,294],[157,4008,338,41]]}
 ];
 
 
@@ -34,289 +34,324 @@ lib.ssMetadata = [
 
 
 
-(lib.Bitmap1 = function() {
+(lib._2362拷贝00 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap101111111111111111111 = function() {
+(lib.Bitmap1 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap11111111111111111111 = function() {
+(lib.Bitmap101111111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(3);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap12111111111111111 = function() {
+(lib.Bitmap11111111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(4);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap13111111111111111 = function() {
+(lib.Bitmap12111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(5);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap14111111111111111 = function() {
+(lib.Bitmap13111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap151111111111111111 = function() {
+(lib.Bitmap14111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(7);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap2 = function() {
+(lib.Bitmap151111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap3 = function() {
+(lib.Bitmap2 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(9);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap4 = function() {
+(lib.Bitmap3 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(10);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap5 = function() {
+(lib.Bitmap4 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(11);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap6111111111111111111111111 = function() {
+(lib.Bitmap5 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(12);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap71111111111111111 = function() {
+(lib.Bitmap6 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(13);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap81111111111111111 = function() {
+(lib.Bitmap6111111111111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(14);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.Bitmap91111111111111 = function() {
+(lib.Bitmap7 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(15);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.shop = function() {
+(lib.Bitmap71111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(16);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.位图36 = function() {
+(lib.Bitmap8 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(17);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.养料 = function() {
+(lib.Bitmap81111111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(18);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.养料2 = function() {
+(lib.Bitmap91111111111111 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(19);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.加养料 = function() {
+(lib.shop = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(20);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.加养料1 = function() {
+(lib.位图36 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(21);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.商城1 = function() {
+(lib.养料 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(22);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.图层36 = function() {
+(lib.养料2 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(23);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.图层37 = function() {
+(lib.加养料 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(24);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.图层40 = function() {
+(lib.加养料1 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(25);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.树木图层1拷贝png复制 = function() {
+(lib.商城1 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(26);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.树木图层2 = function() {
+(lib.图层36 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(27);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.树木图层3png复制 = function() {
+(lib.图层37 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(28);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.树木图层4png复制 = function() {
+(lib.图层40 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(29);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.树木图层5png复制 = function() {
+(lib.大树 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(30);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.树木图层6png复制 = function() {
+(lib.树木图层1拷贝png复制 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(31);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.树木图层7png复制 = function() {
+(lib.树木图层2 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(32);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.树木图层8png复制 = function() {
+(lib.树木图层3png复制 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(33);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.椭圆3 = function() {
+(lib.树木图层4png复制 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(34);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.水壶 = function() {
+(lib.树木图层5png复制 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(35);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.浇水 = function() {
+(lib.树木图层6png复制 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(36);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.矩形4 = function() {
+(lib.树木图层7png复制 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(37);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.答题1 = function() {
+(lib.树木图层8png复制 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(38);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.背包 = function() {
+(lib.椭圆3 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(39);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.草坪 = function() {
+(lib.水壶 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(40);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.进度条 = function() {
+(lib.浇水 = function() {
 	this.initialize(ss["main_atlas_P_1"]);
 	this.gotoAndStop(41);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.矩形4 = function() {
+	this.initialize(ss["main_atlas_P_1"]);
+	this.gotoAndStop(42);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.答题1 = function() {
+	this.initialize(ss["main_atlas_P_1"]);
+	this.gotoAndStop(43);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.背包 = function() {
+	this.initialize(ss["main_atlas_P_1"]);
+	this.gotoAndStop(44);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.草坪 = function() {
+	this.initialize(ss["main_atlas_P_1"]);
+	this.gotoAndStop(45);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.进度条 = function() {
+	this.initialize(ss["main_atlas_P_1"]);
+	this.gotoAndStop(46);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -636,6 +671,52 @@ if (reversed == null) { reversed = false; }
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(0,0,0,0);
+
+
+(lib.元件33 = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// 图层_1
+	this.instance = new lib._2362拷贝00();
+	this.instance.setTransform(-202,0,0.6903,0.6673);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-202,0,418.4,112.1);
+
+
+(lib.元件32 = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// 图层_1
+	this.instance = new lib.大树();
+	this.instance.setTransform(-222,-12);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-222,-12,487,906);
 
 
 (lib.元件28_1 = function(mode,startPosition,loop,reversed) {
@@ -1037,6 +1118,28 @@ if (reversed == null) { reversed = false; }
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(-27,-73.5,53,74.5);
+
+
+(lib.元件34 = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// 图层_1
+	this.instance = new lib.元件32("synched",0);
+	this.instance.setTransform(0,-0.05,0.5538,0.5538,0,0,0,21.5,893.9);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = getMCSymbolPrototype(lib.元件34, new cjs.Rectangle(-134.8,-501.7,269.70000000000005,501.8), null);
 
 
 (lib.元件30 = function(mode,startPosition,loop,reversed) {
@@ -1444,6 +1547,49 @@ if (reversed == null) { reversed = false; }
 p.nominalBounds = new cjs.Rectangle(0,0,93,112);
 
 
+(lib.元件35 = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// timeline functions:
+	this.frame_14 = function() {
+		this.stop();
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).wait(14).call(this.frame_14).wait(1));
+
+	// 图层_1
+	this.instance = new lib.元件34();
+	this.instance.setTransform(-14,-247.75,1,1,0,0,0,0,-250.9);
+
+	this.instance_1 = new lib.Bitmap6();
+	this.instance_1.setTransform(-149,-499);
+
+	this.instance_2 = new lib.元件32("synched",0);
+	this.instance_2.setTransform(-14,2.65,0.5538,0.5538,0,0,0,21.5,893.9);
+
+	this.instance_3 = new lib.Bitmap7();
+	this.instance_3.setTransform(-149,-499);
+
+	this.instance_4 = new lib.Bitmap8();
+	this.instance_4.setTransform(-149,-499);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},3).to({state:[{t:this.instance_2}]},2).to({state:[{t:this.instance_3}]},2).to({state:[{t:this.instance_2}]},2).to({state:[{t:this.instance_4}]},3).to({state:[{t:this.instance_2}]},2).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-149,-499,270,502.2);
+
+
 (lib.元件31 = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -1526,7 +1672,7 @@ if (reversed == null) { reversed = false; }
 	var props = new Object();
 	props.mode = mode;
 	props.startPosition = startPosition;
-	props.labels = {};
+	props.labels = {start1_start:0,start1_end:49,start2_start:50,start2_end:124};
 	props.loop = loop;
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
@@ -1535,21 +1681,44 @@ if (reversed == null) { reversed = false; }
 	this.frame_49 = function() {
 		this.stop();
 	}
+	this.frame_124 = function() {
+		this.stop();
+	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).wait(49).call(this.frame_49).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this).wait(49).call(this.frame_49).wait(75).call(this.frame_124).wait(1));
+
+	// 图层_3
+	this.instance = new lib.元件32("synched",0);
+	this.instance.setTransform(-13.55,2.85,0.3481,0.2802,0,0,0,21.4,894);
+	this.instance.alpha = 0;
+	this.instance._off = true;
+
+	this.instance_1 = new lib.元件35();
+	this.instance_1.setTransform(-0.65,-51,1,1,0,0,0,0,-51.5);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.instance}]},50).to({state:[{t:this.instance}]},8).to({state:[{t:this.instance}]},65).to({state:[{t:this.instance_1}]},1).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(50).to({_off:false},0).to({scaleX:0.381,scaleY:0.381,x:-14.2,y:3.05,alpha:1},8).to({regX:21.5,regY:893.9,scaleX:0.5538,scaleY:0.5538,x:-14,y:3.1},65).to({_off:true},1).wait(1));
+
+	// 图层_4
+	this.instance_2 = new lib.元件33("synched",0);
+	this.instance_2.setTransform(-15.9,11.1,1,1,0,0,0,-0.1,56.1);
+	this.instance_2.alpha = 0;
+	this.instance_2._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(50).to({_off:false},0).to({alpha:1},13).wait(62));
 
 	// 图层_1
 	this.mc = new lib.元件13();
 	this.mc.name = "mc";
-	this.mc.setTransform(-10.25,-3.05,0.1177,0.1177,0,0,0,-27.2,-8.1);
+	this.mc.setTransform(-12.95,-0.8,0.1177,0.1177,0,0,0,-27.2,-8.1);
 
-	this.timeline.addTween(cjs.Tween.get(this.mc).to({regX:-26.9,regY:-8,scaleX:0.3805,scaleY:0.3805},49).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.mc).to({regX:-26.9,regY:-8,scaleX:0.3805,scaleY:0.3805,x:-12.05,y:-3.05},49).to({regY:-7.9,scaleX:0.398,scaleY:0.398,alpha:0},9).to({_off:true},1).wait(66));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-72.6,-192.1,143,192.1);
+p.nominalBounds = new cjs.Rectangle(-217.8,-498.5,418.4,565.6);
 
 
 (lib.元件9 = function(mode,startPosition,loop,reversed) {
@@ -1612,20 +1781,20 @@ if (reversed == null) { reversed = false; }
 	// 图层_1
 	this.tree = new lib.元件14();
 	this.tree.name = "tree";
-	this.tree.setTransform(314.75,-141.2,1,1,0,0,0,-10.4,-2.1);
+	this.tree.setTransform(322.75,-130.2,1,1,0,0,0,-10.4,-2.1);
 
 	this.timeline.addTween(cjs.Tween.get(this.tree).wait(40));
 
 	// 图层_5
 	this.instance = new lib.元件12("synched",0);
-	this.instance.setTransform(302.95,-135.55,0.5993,0.5993,0,0,0,-580,-0.1);
+	this.instance.setTransform(310.95,-124.55,0.5993,0.5993,0,0,0,-580,-0.1);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(40));
 
 	this._renderFirstFrame();
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-44.6,-417,695.1,660);
+p.nominalBounds = new cjs.Rectangle(-36.6,-417,695.1,660);
 
 
 (lib.元件7 = function(mode,startPosition,loop,reversed) {
@@ -1766,7 +1935,7 @@ if (reversed == null) { reversed = false; }
 
 	this._renderFirstFrame();
 
-}).prototype = getMCSymbolPrototype(lib.page_1, new cjs.Rectangle(-7.6,-146.2,837.6,1623.3), null);
+}).prototype = getMCSymbolPrototype(lib.page_1, new cjs.Rectangle(0,-146.2,830,1623.3), null);
 
 
 // stage content:
@@ -1800,7 +1969,7 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/main_atlas_P_1.png?1765299609111", id:"main_atlas_P_1"}
+		{src:"images/main_atlas_P_1.png?1765357894056", id:"main_atlas_P_1"}
 	],
 	preloads: []
 };
