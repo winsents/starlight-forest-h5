@@ -71,6 +71,26 @@ function onPageInited(e) {
             page.rect_test.scaleY = rectKettle.height * 1.5 / page.rect_test.getBounds().height;
             page.rect_test.scaleX = rectKettle.width * 1.5 / page.rect_test.getBounds().width;
 
+            page.tools_bar.bag.addEventListener("click", e => { 
+                console.log("click bag");
+                App.dlgView.show = true;
+            })
+
+            page.tools_bar.question.addEventListener("click", e => { 
+                console.log("click bag");
+                App.dlgView.show = true;
+            })
+
+            page.tools_bar.shop.addEventListener("click", e => { 
+                console.log("click bag");
+                App.dlgView.show = true;
+            })
+
+            page.tools_bar.score.addEventListener("click", e => { 
+                console.log("click bag");
+                App.dlgView.show = true;
+            })
+
             let setKettleState = function (state) {
                 if(page.kettle.state == state) {
                     return;

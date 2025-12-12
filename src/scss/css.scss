@@ -705,3 +705,70 @@ li {
     justify-content: center;
   }
 }
+
+.dlg-view {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: opacity 0.4s ease-in, visibility 0s ease 0.5s;
+  
+  & .dlg {
+    top: 90%;
+    left: 50%;
+    width: 80%;
+    opacity: 0;
+    min-height: 2rem;
+    position: absolute;
+    border-radius: 0.3rem;
+    background: transparent;
+    vertical-align: text-top;
+    transform: translate3d(-50%, -50%, 0);
+    transition: top 0.4s ease-in-out, opacity 0.4s ease-in;
+    img {
+      width: 100%;
+      vertical-align: top;
+    }
+    & .close-btn {
+      left: 50%;
+      bottom: 0rem;
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 50%;
+      position: absolute;
+      border: #fff solid 0.02rem;
+      transform: translate3d(-50%, 200%, 0) rotate(45deg);
+
+      &:after,
+      &:before {
+        top: 50%;
+        left: 50%;
+        width: 80%;
+        content: "";
+        display: block;
+        position: absolute;
+        height: 1px;
+        background-color: #ffffff;
+        transform: translate3d(-50%, -50%, 0);
+      }
+      &:before {
+        transform: translate3d(-50%, -50%, 0) rotate(90deg);
+      }
+    }
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transition: visibility 0.4s ease-in, opacity 0.4s ease;
+    & .dlg {
+      top: 50%;
+      opacity: 1;
+    }
+  }
+}

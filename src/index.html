@@ -574,7 +574,7 @@
                 </div>
             </div>
 
-            <div class="left-bar" :class="{show: mainView.leftBar.show}">
+            <div class="left-bar" :class="{show: mainView.leftBar.show}" @click="dlgView.show=true;">
                 <img src="./images/left-bar.png" />
                 <div class="frame">
                     <div class="icon">
@@ -588,7 +588,7 @@
                 </div>
             </div>
 
-            <div class="right-bar" :class="{show: mainView.rightBar.show}">
+            <div class="right-bar" :class="{show: mainView.rightBar.show}" @click="dlgView.show=true">
                 <img src="./images/right-bar.png" />
                 <div class="icon">
                     <img src="./images/icon.png" />
@@ -630,6 +630,13 @@
             </div>
         </div>
 
+        <div class="dlg-view" :class="{show: dlgView.show}">
+            <div class="dlg">
+                <div class="close-btn" @click="dlgView.show=false;"></div>
+                <img :src="dlgView.url" />
+            </div>
+        </div>
+
         <audio src="" id="Jaudio" class="media-audio" preload loop="loop"></audio>
     </div>
 </body>
@@ -665,6 +672,11 @@
                 loadingView: {
                     // loading 视图
                     show: true
+                },
+                dlgView: {
+                    // 对话框视图
+                    show: false,
+                    url: './images/dlg-view.png'
                 },
                 mainView: {
                     // 主要视图
