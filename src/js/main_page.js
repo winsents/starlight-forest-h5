@@ -74,22 +74,37 @@ function onPageInited(e) {
             page.tools_bar.bag.addEventListener("click", e => { 
                 console.log("click bag");
                 App.dlgView.show = true;
+                App.dlgView.url = "./images/dlg-view.png";
             })
 
             page.tools_bar.question.addEventListener("click", e => { 
                 console.log("click bag");
                 App.dlgView.show = true;
+                App.dlgView.url = "./images/dlg-view.png";
             })
 
             page.tools_bar.shop.addEventListener("click", e => { 
                 console.log("click bag");
                 App.dlgView.show = true;
+                App.dlgView.url = "./images/dlg-view.png";
             })
 
             page.tools_bar.score.addEventListener("click", e => { 
                 console.log("click bag");
                 App.dlgView.show = true;
+                App.dlgView.url = "./images/dlg-view.png";
             })
+
+            page.tools_bar.gift.addEventListener("click", e => { 
+                console.log("click bag");
+                App.dlgView.show = true;
+                App.dlgView.url = "./images/dlg-view2.jpg";
+            })
+
+            page.tools_bar.addEventListener("complate", e => {
+                console.log("tools bar complate");
+                page.tools_bar.gift.gotoAndPlay(1);
+            });
 
             let setKettleState = function (state) {
                 if(page.kettle.state == state) {
