@@ -742,7 +742,7 @@ li {
       border-radius: 50%;
       position: absolute;
       border: #fff solid 0.02rem;
-      transform: translate3d(-50%, 200%, 0) rotate(45deg);
+      transform: translate3d(-50%, 150%, 0) rotate(45deg);
 
       &:after,
       &:before {
@@ -767,7 +767,7 @@ li {
     visibility: visible;
     transition: visibility 0.4s ease-in, opacity 0.4s ease;
     & .dlg {
-      top: 50%;
+      top: 45%;
       opacity: 1;
     }
   }
